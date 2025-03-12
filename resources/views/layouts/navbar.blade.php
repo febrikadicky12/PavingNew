@@ -14,7 +14,13 @@
                     <a class="nav-link" href="{{ url('/profile') }}">Profile</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-danger" href="{{ url('/logout') }}">Logout</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                    <a class="nav-link text-danger" href="#" 
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
                 </li>
             </ul>
         </div>
