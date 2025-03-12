@@ -7,7 +7,7 @@ use App\Http\Controllers\HomeController;
 
 // Halaman utama
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 // Routing dengan middleware role
