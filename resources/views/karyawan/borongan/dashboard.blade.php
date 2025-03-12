@@ -1,6 +1,8 @@
 @extends('layouts.master')
 
+@section('title', 'Dashboard Karyawan Borongan')
+
 @section('content')
-    <h1>Selamat datang, {{ auth()->user()->name }}</h1>
-    <p>Role: {{ auth()->user()->role }}</p>
+    <h1>Karyawan Borongan Dashboard</h1>
+    <p>Selamat datang, Karyawan Borongan!</p>
 @endsection

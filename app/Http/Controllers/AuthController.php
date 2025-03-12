@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -19,32 +20,18 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+            $user = Auth::user();
+
+            if ($user->role == 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role == 'karyawan_borongan') {
+                return redirect()->route('karyawan.borongan.dashboard');
+            } elseif ($user->role == 'karyawan_bulanan') {
+                return redirect()->route('karyawan.bulanan.dashboard');
+            }
         }
 
-        return back()->withErrors(['email' => 'Email atau password salah.']);
-    }
-
-    public function showRegisterForm() {
-        return view('auth.register');
-    }
-
-    public function register(Request $request) {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'password' => 'required|confirmed',
-            'role' => 'required|in:admin,karyawan_borongan,karyawan_bulanan',
-        ]);
-
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'role' => $request->role
-        ]);
-
-        return redirect('/login')->with('success', 'Registrasi berhasil. Silakan login.');
+        return back()->with('error', 'Email atau password salah.');
     }
 
     public function logout(Request $request) {
