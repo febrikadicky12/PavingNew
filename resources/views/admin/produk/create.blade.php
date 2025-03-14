@@ -36,8 +36,8 @@
 
                         <div class="mb-3">
                             <label class="form-label">Harga Produk</label>
-                            <input type="number" name="harga_produk" class="form-control" required>
-                        </div>
+                            <input type="number" name="harga_produk" value="{{ old('harga_produk') }}" class="form-control" step="any" min="0" onwheel="this.blur()">
+                            </div>
 
                         <div class="mb-3">
                             <label class="form-label">Ukuran Produk</label>
