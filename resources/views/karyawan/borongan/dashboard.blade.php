@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layoutskaryawanborongan.master')
 
 @section('title', 'Dashboard Karyawan Borongan')
 
