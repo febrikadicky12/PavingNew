@@ -3,7 +3,7 @@
 @section('title', 'Data Mesin')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <h2>Data Mesin</h2>
 
     <!-- Menambahkan flexbox untuk memberikan jarak antara search dan tombol tambah -->
@@ -22,7 +22,7 @@
 
     <table class="table table-bordered">
         <tr>
-            <th>ID</th>
+            <th>No</th>
             <th>Nama Mesin</th>
             <th>Status</th>
             <th>Aksi</th>
