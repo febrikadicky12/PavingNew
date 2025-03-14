@@ -3,11 +3,11 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-<<<<<<< HEAD
+
 use App\Http\Controllers\UserController;
-=======
+
 use App\Http\Controllers\Admin\MesinController;
->>>>>>> f59421550014599f489a77f12926a77467464964
+
 
 // Halaman utama
 Route::get('/', function () {
@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-<<<<<<< HEAD
+
     // Admin routes - accessible only by admin role
     Route::middleware(['role:admin'])->group(function () {
         Route::get('/admin', function () {
@@ -69,7 +69,8 @@ Route::middleware(['auth'])->group(function () {
         ]);
     });
 });
-=======
+
+
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -81,4 +82,3 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/datamesin/{mesin}', [MesinController::class, 'update'])->name('datamesin.update');
     Route::delete('/datamesin/{mesin}', [MesinController::class, 'destroy'])->name('datamesin.destroy');
 });
->>>>>>> f59421550014599f489a77f12926a77467464964

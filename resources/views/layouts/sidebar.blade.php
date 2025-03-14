@@ -245,13 +245,13 @@
           </a>
         </li><!-- End Dashboard Nav -->
   
-<<<<<<< HEAD
+
       <li class="nav-item">
   <a class="nav-link" href="{{ route('admin.users.index') }}">
     <i class="bi bi-people"></i><span>Akun Karyawan</span>
   </a>
 </li><!-- End Akun Karyawan Nav -->
-=======
+
         <li class="nav-item">
           <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
             <i class="bi bi-boxes"></i><span>Produk</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -329,7 +329,7 @@
             </li>
           </ul>
         </li><!-- End Components Nav -->
->>>>>>> 14788aebfcfac149603cdb3199f171b5ba6a6691
+
   
         <li class="nav-item">
           <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
