@@ -9,8 +9,8 @@ class UserSeeder extends Seeder {
     public function run(): void {
         User::insert([
             [
-                'name' => 'Kiano',
-                'email' => 'admin@gmail.com',
+                'name' => 'dwi',
+                'email' => 'dwinursyafa73@gmail.com',
                 'password' => Hash::make('admin123'),
                 'role' => 'admin',
                 'created_at' => now(),
