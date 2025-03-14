@@ -58,7 +58,7 @@
             </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary">Simpan</button>
-              <a href="{{ route('admin.karyawan.indexs') }}" class="btn btn-secondary">Batal</a>
+              <a href="{{ route('admin.karyawan.index') }}" class="btn btn-secondary">Batal</a>
             </div>
           </form>
           <!-- End Form -->
