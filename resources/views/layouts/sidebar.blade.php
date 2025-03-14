@@ -251,16 +251,19 @@
     <i class="bi bi-people"></i><span>Akun Karyawan</span>
   </a>
 </li><!-- End Akun Karyawan Nav -->
+
 <li class="nav-item">
   <a class="nav-link" href="{{ route('admin.karyawan.index') }}">
     <i class="bi bi-people"></i><span>Karyawan</span>
   </a>
 </li><!-- End Akun Karyawan Nav -->
 
+
         <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-boxes"></i><span>Produk</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link" href="{{ route('admin.produk.index') }}">
+        <i class="bi bi-boxes"></i><span>Produk</span></i>
           </a>
+
           <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
               <a href="components-alerts.html">
@@ -334,6 +337,9 @@
             </li>
           </ul>
         </li><!-- End Components Nav -->
+
+        </li><!-- End Produk -->
+
 
   
         <li class="nav-item">
