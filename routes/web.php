@@ -3,11 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
-<<<<<<< HEAD
 use App\Http\Controllers\UserController;
-=======
 use App\Http\Controllers\Admin\MesinController;
->>>>>>> f59421550014599f489a77f12926a77467464964
+use App\Http\Controllers\KaryawanController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -36,12 +34,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-<<<<<<< HEAD
     // Admin routes - accessible only by admin role
     Route::middleware(['role:admin'])->group(function () {
         Route::get('/admin', function () {
             return view('admin.dashboard');
         });
+        
+        // User management routes
         Route::resource('admin/users', UserController::class)->names([
             'index'   => 'admin.users.index',
             'create'  => 'admin.users.create',
@@ -51,9 +50,20 @@ Route::middleware(['auth'])->group(function () {
             'update'  => 'admin.users.update',
             'destroy' => 'admin.users.destroy',
         ]);
-
-        // User management routes
+        
+        // Legacy resource route
         Route::resource('users', UserController::class);
+        
+        // Karyawan management routes
+        Route::resource('admin/karyawan', KaryawanController::class)->names([
+            'index'   => 'admin.karyawan.index',
+            'create'  => 'admin.karyawan.create',
+            'store'   => 'admin.karyawan.store',
+            'show'    => 'admin.karyawan.show',
+            'edit'    => 'admin.karyawan.edit',
+            'update'  => 'admin.karyawan.update',
+            'destroy' => 'admin.karyawan.destroy',
+        ]);
     });
 
     // Karyawan routes - accessible by both types of employees
@@ -68,17 +78,18 @@ Route::middleware(['auth'])->group(function () {
             'destroy' => 'karyawan.users.destroy',
         ]);
     });
+    
+    // Admin data mesin routes
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/datamesin', [MesinController::class, 'index'])->name('datamesin.index');
+        Route::get('/datamesin/create', [MesinController::class, 'create'])->name('datamesin.create');
+        Route::post('/datamesin', [MesinController::class, 'store'])->name('datamesin.store');
+        Route::get('/datamesin/{mesin}', [MesinController::class, 'show'])->name('datamesin.show');
+        Route::get('/datamesin/{mesin}/edit', [MesinController::class, 'edit'])->name('datamesin.edit');
+        Route::put('/datamesin/{mesin}', [MesinController::class, 'update'])->name('datamesin.update');
+        Route::delete('/datamesin/{mesin}', [MesinController::class, 'destroy'])->name('datamesin.destroy');
+    });
 });
-=======
-Route::get('/home', [HomeController::class, 'index']);
 
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/datamesin', [MesinController::class, 'index'])->name('datamesin.index');
-    Route::get('/datamesin/create', [MesinController::class, 'create'])->name('datamesin.create');
-    Route::post('/datamesin', [MesinController::class, 'store'])->name('datamesin.store');
-    Route::get('/datamesin/{mesin}', [MesinController::class, 'show'])->name('datamesin.show');
-    Route::get('/datamesin/{mesin}/edit', [MesinController::class, 'edit'])->name('datamesin.edit');
-    Route::put('/datamesin/{mesin}', [MesinController::class, 'update'])->name('datamesin.update');
-    Route::delete('/datamesin/{mesin}', [MesinController::class, 'destroy'])->name('datamesin.destroy');
-});
->>>>>>> f59421550014599f489a77f12926a77467464964
+// Duplicate home route outside middleware - consider removing this
+Route::get('/home', [HomeController::class, 'index']);
