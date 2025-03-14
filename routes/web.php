@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
 use App\Http\Controllers\UserController;
-
 use App\Http\Controllers\Admin\MesinController;
 
 
@@ -70,7 +69,6 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-
 Route::get('/home', [HomeController::class, 'index']);
 
 Route::prefix('admin')->name('admin.')->group(function () {
@@ -81,4 +79,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::get('/datamesin/{mesin}/edit', [MesinController::class, 'edit'])->name('datamesin.edit');
     Route::put('/datamesin/{mesin}', [MesinController::class, 'update'])->name('datamesin.update');
     Route::delete('/datamesin/{mesin}', [MesinController::class, 'destroy'])->name('datamesin.destroy');
+});
+
+
+use App\Http\Controllers\Admin\ProdukController;
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
+    Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
+    Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
+    Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
+    Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('produk.update');
+    Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+    Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('produk.show'); // Tambahkan ini
 });
