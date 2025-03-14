@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -32,15 +33,13 @@ class ProdukController extends Controller
         $request->validate([
             'nama_produk'   => 'required|string|max:255',
             'jenis_produk'  => 'required|string|max:255',
-            'harga_produk'  => 'required|numeric|min:500',
+            'harga_produk' => 'required|numeric|min:500',
             'ukuran_produk' => 'required|string|max:50',
             'tipe_harga'    => 'required|string|in:reguler,diskon',
             'stok_produk'   => 'required|integer|min:0',
         ]);
 
-        Produk::create($request->only([
-            'nama_produk', 'jenis_produk', 'harga_produk', 'ukuran_produk', 'tipe_harga', 'stok_produk'
-        ]));
+        Produk::create($request->all());
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan!');
     }
@@ -48,36 +47,37 @@ class ProdukController extends Controller
     /**
      * Tampilkan detail produk.
      */
-    public function show(Produk $produk)
+    public function show($id)
     {
+        $produk = Produk::findOrFail($id);
         return view('admin.produk.show', compact('produk'));
     }
 
     /**
      * Tampilkan form edit produk.
      */
-    public function edit(Produk $produk)
+    public function edit($id)
     {
+        $produk = Produk::findOrFail($id);
         return view('admin.produk.edit', compact('produk'));
     }
 
     /**
      * Update produk di database.
      */
-    public function update(Request $request, Produk $produk)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'nama_produk'   => 'required|string|max:255',
             'jenis_produk'  => 'required|string|max:255',
-            'harga_produk'  => 'required|numeric|min:500',
+            'harga_produk' => 'required|numeric|min:500',
             'ukuran_produk' => 'required|string|max:50',
             'tipe_harga'    => 'required|string|in:reguler,diskon',
             'stok_produk'   => 'required|integer|min:0',
         ]);
 
-        $produk->update($request->only([
-            'nama_produk', 'jenis_produk', 'harga_produk', 'ukuran_produk', 'tipe_harga', 'stok_produk'
-        ]));
+        $produk = Produk::findOrFail($id);
+        $produk->update($request->all());
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil diperbarui!');
     }
@@ -85,9 +85,11 @@ class ProdukController extends Controller
     /**
      * Hapus produk dari database.
      */
-    public function destroy(Produk $produk)
+    public function destroy($id)
     {
+        $produk = Produk::findOrFail($id);
         $produk->delete();
+
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus!');
     }
 }
