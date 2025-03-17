@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="pagetitle">
+<div class="container">
     <h1>Tambah Produk</h1>
     <nav>
         <ol class="breadcrumb">
@@ -17,7 +17,7 @@
 
 <section class="section">
     <div class="row">
-        <div class="col-lg-6">
+    <div class="col-lg-8 mx-auto">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Form Tambah Produk</h5>
@@ -57,7 +57,7 @@
                             <input type="number" name="stok_produk" class="form-control" required>
                         </div>
 
-                        <button type="submit" class="btn btn-success">Simpan</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
                         <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary">Batal</a>
 
                     </form>

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="pagetitle">
+<div class="container">
     <h1>Edit Produk</h1>
     <nav>
         <ol class="breadcrumb">
@@ -59,7 +59,7 @@
                             <input type="number" name="stok_produk" class="form-control" value="{{ $produk->stok_produk }}" required>
                         </div>
 
-                        <button type="submit" class="btn btn-success">Update Produk</button>
+                        <button type="submit" class="btn btn-primary">Update Produk</button>
                         <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary">Batal</a>
 
                     </form>
