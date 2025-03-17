@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\MesinController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\Admin\ProdukController;
-
+use App\Http\Controllers\Admin\MitraController;
 
 // Halaman utama
 Route::get('/', function () {
@@ -105,3 +105,12 @@ Route::middleware(['auth'])->group(function () {
 
 // Duplicate home route outside middleware - consider removing this
 Route::get('/home', [HomeController::class, 'index']);
+
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/mitra', [MitraController::class, 'index'])->name('mitra.index');
+    Route::get('/mitra/create', [MitraController::class, 'create'])->name('mitra.create');
+    Route::post('/mitra', [MitraController::class, 'store'])->name('mitra.store');
+    Route::get('/mitra/{id}/edit', [MitraController::class, 'edit'])->name('mitra.edit');
+    Route::put('/mitra/{id}', [MitraController::class, 'update'])->name('mitra.update');
+    Route::delete('/mitra/{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
+});
