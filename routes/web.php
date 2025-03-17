@@ -7,6 +7,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Admin\MesinController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\ProduksiController;
+use App\Http\Controllers\Admin\SuplierController;
+use App\Http\Controllers\Admin\BahanController;
 
 
 // Halaman utama
@@ -96,12 +99,44 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/produk', [ProdukController::class, 'index'])->name('produk.index');
         Route::get('/produk/create', [ProdukController::class, 'create'])->name('produk.create');
         Route::post('/produk', [ProdukController::class, 'store'])->name('produk.store');
-        Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
-        Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('produk.update');
-        Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('produk.destroy');
-        Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('produk.show'); // Tambahkan ini
+        Route::get('/produk/{produk}/edit', [ProdukController::class, 'edit'])->name('produk.edit');
+        Route::put('/produk/{produk}', [ProdukController::class, 'update'])->name('produk.update');
+        Route::delete('/produk/{produk}', [ProdukController::class, 'destroy'])->name('produk.destroy');
+        Route::get('/produk/{produk}', [ProdukController::class, 'show'])->name('produk.show');
     });
-});
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/produksi', [ProduksiController::class, 'index'])->name('produksi.index');
+        Route::get('/produksi/create', [ProduksiController::class, 'create'])->name('produksi.create');
+        Route::post('/produksi', [ProduksiController::class, 'store'])->name('produksi.store');
+        Route::get('/produksi/{id}/edit', [ProduksiController::class, 'edit'])->name('produksi.edit');
+        Route::put('/produksi/{id}', [ProduksiController::class, 'update'])->name('produksi.update');
+        Route::delete('/produksi/{id}', [ProduksiController::class, 'destroy'])->name('produksi.destroy');
+        Route::get('/produksi/{id}', [ProduksiController::class, 'show'])->name('produksi.show'); // Tambahkan ini
+    });
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/suplier', [SuplierController::class, 'index'])->name('suplier.index');
+        Route::get('/suplier/create', [SuplierController::class, 'create'])->name('suplier.create');
+        Route::post('/suplier', [SuplierController::class, 'store'])->name('suplier.store');
+        Route::get('/suplier/{suplier}/edit', [SuplierController::class, 'edit'])->name('suplier.edit');
+        Route::put('/suplier/{suplier}', [SuplierController::class, 'update'])->name('suplier.update');
+        Route::delete('/suplier/{suplier}', [SuplierController::class, 'destroy'])->name('suplier.destroy');
+        Route::get('/suplier/{suplier}', [SuplierController::class, 'show'])->name('suplier.show');
+    });
+
+    Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('/bahan', [BahanController::class, 'index'])->name('bahan.index');
+    Route::get('admin/bahan/create', [BahanController::class, 'create'])->name('bahan.create');
+    Route::post('admin/bahan', [BahanController::class, 'store'])->name('bahan.store');
+    Route::get('/bahan/{bahan}/edit', [BahanController::class, 'edit'])->name('bahan.edit');
+    Route::put('/bahan/{bahan}', [BahanController::class, 'update'])->name('bahan.update');
+    Route::delete('/bahan/{bahan}', [BahanController::class, 'destroy'])->name('bahan.destroy');
+    
+    });
+    
+    
 
 // Duplicate home route outside middleware - consider removing this
 Route::get('/home', [HomeController::class, 'index']);
+});

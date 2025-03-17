@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="pagetitle">
+<div class="container">
     <h1>Kelola Produk</h1>
     <nav>
         <ol class="breadcrumb">
@@ -20,13 +20,14 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Daftar Produk</h5>
+                    
                     <a href="{{ route('admin.produk.create') }}" class="btn btn-primary mb-3">Tambah Produk</a>
 
                     <!-- Table -->
                     <table class="table table-striped datatable">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>No</th>
                                 <th>Nama Produk</th>
                                 <th>Jenis</th>
                                 <th>Harga</th>
