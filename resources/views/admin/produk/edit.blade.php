@@ -58,10 +58,11 @@
                             <label class="form-label">Stok Produk</label>
                             <input type="number" name="stok_produk" class="form-control" value="{{ $produk->stok_produk }}" required>
                         </div>
-
-                        <button type="submit" class="btn btn-primary">Update Produk</button>
-                        <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary">Batal</a>
-
+                        <div class="d-flex justify-content-end mb-3">
+                            <button type="submit" class="btn btn-primary">Update Produk</button>
+                            <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary ms-2">Batal</a>
+                        </div>
+                        
                     </form>
 
                 </div>

@@ -34,9 +34,11 @@
             @endforeach
         </select>
     </div>
+    <div class="d-flex justify-content-end gap-2">
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="{{ route('admin.mitra.index') }}" class="btn btn-secondary">Batal</a>
+    </div>      
 
-    <button type="submit" class="btn btn-success">Simpan</button>
-    <a href="{{ route('admin.mitra.index') }}" class="btn btn-secondary">Batal</a>
 </form>
 
 @endsection

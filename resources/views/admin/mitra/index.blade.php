@@ -6,7 +6,12 @@
 <section class="content-section">
     <div class="container mt-4">
         <h1>Daftar Mitra</h1>
-        <a href="{{ route('admin.mitra.create') }}" class="btn btn-primary">Tambah Mitra</a>
+    </div>
+
+    <div class="row">
+        <div class="col text-end mb-3">
+            <a href="{{ route('admin.mitra.create') }}" class="btn btn-primary">Tambah Mitra</a>
+        </div>
     </div>
 
     <table class="table">

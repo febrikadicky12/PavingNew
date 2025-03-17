@@ -21,8 +21,12 @@
                 <div class="card-body">
                     <h5 class="card-title">Daftar Bahan</h5>
 
-                    <a href="{{ route('admin.bahan.create') }}" class="btn btn-primary mb-3">Tambah Bahan</a>
-
+                    <div class="row">
+                        <div class="col text-end mb-3">
+                            <a href="{{ route('admin.bahan.create') }}" class="btn btn-primary">Tambah Bahan</a>
+                        </div>
+                    </div>
+                    
                     @if(session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif

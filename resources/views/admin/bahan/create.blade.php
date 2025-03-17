@@ -38,8 +38,10 @@
                     <label for="satuan" class="form-label">Satuan</label>
                     <input type="text" name="satuan" class="form-control" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Simpan</button>
-            </form>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+                </form>
         </div>
     </div>
 </section>

@@ -21,8 +21,10 @@
                 <div class="card-body">
                     <h5 class="card-title">Daftar Produk</h5>
                     
-                    <a href="{{ route('admin.produk.create') }}" class="btn btn-primary mb-3">Tambah Produk</a>
-
+                    <div class="d-flex justify-content-end mb-3">
+                        <a href="{{ route('admin.produk.create') }}" class="btn btn-primary">Tambah Produk</a>
+                    </div>
+                    
                     <!-- Table -->
                     <table class="table table-striped datatable">
                         <thead>
