@@ -4,7 +4,8 @@
 
 @section('content')
 
-<div class="pagetitle">
+<div class="container">
+<div class="container mt-4">
     <h1>Tambah Mitra</h1>
 </div>
 
