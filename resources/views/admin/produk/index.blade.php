@@ -26,10 +26,19 @@
                         <a href="{{ route('admin.produk.create') }}" class="btn btn-primary">Tambah Produk</a>
                     </div>
 
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                    <input type="text" name="search" class="form-control" placeholder="Cari Produk..." value="{{ request('search') }}">
-                <button type="submit" class="btn btn-primary ms-2">Cari</button>
-                     </div>
+                    <div class="input-group">
+    <form action="{{ route('admin.produk.index') }}" method="GET" class="d-flex w-100">
+        <input type="text" name="search" class="form-control me-2" 
+               placeholder="Cari Produk..." value="{{ request('search') }}" 
+               style="max-width: 800px;">
+        <button type="submit" class="btn btn-primary">Cari</button>
+        @if(request('search'))
+            <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary ms-2">Reset</a>
+        @endif
+    </form>
+</div>
+
+
                     
                     <!-- Table -->
                     <table class="table table-striped datatable">

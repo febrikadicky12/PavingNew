@@ -11,11 +11,21 @@ class ProdukController extends Controller
     /**
      * Tampilkan daftar produk.
      */
-    public function index()
-    {
-        $produk = Produk::all();
-        return view('admin.produk.index', compact('produk'));
-    }
+    public function index(Request $request)
+{
+    // Ambil keyword dari input pencarian
+    $keyword = $request->input('search');
+
+    // Jika ada keyword, lakukan pencarian; jika tidak, tampilkan semua data
+    $produk = Produk::when($keyword, function ($query) use ($keyword) {
+        $query->where('nama_produk', 'like', "%{$keyword}%")
+              ->orWhere('jenis_produk', 'like', "%{$keyword}%")
+              ->orWhere('tipe_harga', 'like', "%{$keyword}%");
+    })->get();
+
+    return view('admin.produk.index', compact('produk'));
+}
+
 
     /**
      * Tampilkan form tambah produk.

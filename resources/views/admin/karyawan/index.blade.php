@@ -30,11 +30,11 @@
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Cari karyawan..." name="search" value="{{ $search ?? '' }}">
               <button class="btn btn-primary" type="submit">
-                <i class="bi bi-search"></i> Cari
+                </i> Cari
               </button>
               @if(!empty($search))
                 <a href="{{ route('admin.karyawan.index') }}" class="btn btn-secondary">
-                  <i class="bi bi-x-circle"></i> Reset
+                  </i> Reset
                 </a>
               @endif
             </div>

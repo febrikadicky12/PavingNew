@@ -10,17 +10,18 @@ use App\Models\Suplier;
 class BahanController extends Controller
 {
     // Menampilkan daftar bahan
-    public function index()
-    {
-        $bahan = Bahan::with('suplier')->get(); // Menggunakan relasi eager loading
-        return view('admin.bahan.index', compact('bahan'));
-    }
-
-    // Menampilkan form tambah bahan
-    public function create()
+    // Menampilkan daftar bahan
+public function index(Request $request)
 {
-    $supliers = DB::table('suplier')->get(); // Ambil semua data suplier dari tabel
-    return view('admin.bahan.create', compact('supliers'));
+    $search = $request->input('search'); // Ambil data pencarian dari request
+
+    $bahan = Bahan::with('suplier')
+                ->when($search, function ($query) use ($search) {
+                    $query->where('nama_bahan', 'like', "%$search%");
+                })
+                ->get(); // Menggunakan relasi eager loading
+
+    return view('admin.bahan.index', compact('bahan'));
 }
 
 
