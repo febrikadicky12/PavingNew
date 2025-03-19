@@ -44,7 +44,7 @@
     </header>
 
     <!-- ======= Sidebar ======= -->
-    <aside id="sidebar" class="sidebar collapsed"> <!-- Sidebar dalam keadaan tertutup -->
+    <aside id="sidebar" class="sidebar"> <!-- Sidebar dalam keadaan tertutup -->
       <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
@@ -105,32 +105,8 @@
     </main>
 
     <!-- ======= JavaScript untuk Sidebar ======= -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-    const toggleBtn = document.querySelector(".toggle-sidebar-btn");
-    const sidebar = document.querySelector("#sidebar");
+    
+ 
 
-    function closeSidebar() {
-        sidebar.classList.add("collapsed");
-    }
-
-    toggleBtn.addEventListener("click", function () {
-        sidebar.classList.toggle("collapsed");
-    });
-
-    document.addEventListener("click", function (event) {
-        const isClickInsideSidebar = sidebar.contains(event.target);
-        const isClickOnToggleBtn = toggleBtn.contains(event.target);
-
-        // Jangan tutup sidebar jika klik terjadi pada submenu
-        const isSubmenuLink = event.target.closest("#pengelolaan-nav");
-        
-        if (!isClickInsideSidebar && !isClickOnToggleBtn && !isSubmenuLink) {
-            closeSidebar();
-        }
-    });
-});
-
-    </script>
 
 </body>
