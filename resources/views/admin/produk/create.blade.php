@@ -56,7 +56,7 @@
                             <label class="form-label">Stok Produk</label>
                             <input type="number" name="stok_produk" class="form-control" required>
                         </div>
-                        <div class="text-start">
+                        <div class="d-flex justify-content-end mb-3">
                             <button type="submit" class="btn btn-primary">Simpan</button>
                             <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary ms-2">Batal</a>
                         </div>

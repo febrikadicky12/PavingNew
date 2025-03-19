@@ -50,10 +50,10 @@
                 <label for="satuan" class="form-label">Satuan</label>
                 <input type="text" name="satuan" id="satuan" class="form-control" value="{{ old('satuan', $bahan->satuan) }}" required>
             </div>
-            <div class="d-flex justify-content-end gap-2">
-                <a href="{{ route('admin.datamesin.index') }}" class="btn btn-secondary">Kembali</a>
-                <button type="submit" class="btn btn-primary">{{ isset($bahan) ? 'Update' : 'Simpan' }}</button>
-            </div>            
+            <div class="d-flex justify-content-end mb-3">
+                <button type="submit" class="btn btn-primary">Update Bahan</button>
+                <a href="{{ route('admin.bahan.index') }}" class="btn btn-secondary ms-2">Batal</a>
+            </div>
         </form>
     </div>
 </section>

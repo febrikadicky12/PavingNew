@@ -4,21 +4,12 @@
 
 @section('content')
 <section class="content-section">
-<div class="row">
     <div class="col-lg-8 mx-auto">
-    <div class="card shadow-sm rounded-lg p-4">
         <h2>Edit Suplier</h2>
-
         @if ($errors->any())
             <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
             </div>
         @endif
-
         <form action="{{ route('admin.suplier.update', $suplier->id_suplier) }}" method="POST">
             @csrf
             @method('PUT')
@@ -41,7 +32,10 @@
                        value="{{ old('no_telp', $suplier->no_telp) }}" required>
             </div>
 
-            <button type="submit" class="btn btn-primary">Update</button>
+            <div class="d-flex justify-content-end mb-3">
+                <button type="submit" class="btn btn-primary">Update Suplier</button>
+                <a href="{{ route('admin.suplier.index') }}" class="btn btn-secondary ms-2">Batal</a>
+            </div>        
         </form>
     </div>
 </section>

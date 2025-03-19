@@ -33,8 +33,10 @@
                 <label>No Telp</label>
                 <input type="text" name="no_telp" class="form-control" required>
             </div>
-            <button type="submit" class="btn btn-primary">Simpan</button>
-        </form>
+            <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">Simpan</button>
+                </div>
+            </form>
     </div>
 </section>
 @endsection

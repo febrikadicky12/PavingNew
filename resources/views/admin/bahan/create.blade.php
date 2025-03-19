@@ -38,9 +38,8 @@
                     <label for="satuan" class="form-label">Satuan</label>
                     <input type="text" name="satuan" class="form-control" required>
                 </div>
-                <div class="text-start">
+                <div class="d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary">Simpan</button>
-                    <a href="{{ route('admin.bahan.index') }}" class="btn btn-secondary ms-2">Batal</a>
                 </div>
                 </form>
         </div>

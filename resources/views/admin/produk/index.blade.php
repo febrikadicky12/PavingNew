@@ -21,24 +21,9 @@
                 <div class="card-body">
                     <h5 class="card-title">Daftar Produk</h5>
                     
-                    
                     <div class="d-flex justify-content-end mb-3">
                         <a href="{{ route('admin.produk.create') }}" class="btn btn-primary">Tambah Produk</a>
                     </div>
-
-                    <div class="input-group">
-    <form action="{{ route('admin.produk.index') }}" method="GET" class="d-flex w-100">
-        <input type="text" name="search" class="form-control me-2" 
-               placeholder="Cari Produk..." value="{{ request('search') }}" 
-               style="max-width: 800px;">
-        <button type="submit" class="btn btn-primary">Cari</button>
-        @if(request('search'))
-            <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary ms-2">Reset</a>
-        @endif
-    </form>
-</div>
-
-
                     
                     <!-- Table -->
                     <table class="table table-striped datatable">
