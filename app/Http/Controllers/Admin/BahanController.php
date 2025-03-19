@@ -77,5 +77,11 @@ public function index(Request $request)
 
         return redirect()->route('admin.bahan.index')->with('success', 'Bahan berhasil dihapus!');
     }
+
+    public function create()
+{
+    $supliers = DB::table('suplier')->get(); // Ambil semua data suplier dari tabel
+    return view('admin.bahan.create', compact('supliers'));
+}
 }
 
