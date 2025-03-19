@@ -26,7 +26,21 @@
                             <a href="{{ route('admin.bahan.create') }}" class="btn btn-primary">Tambah Bahan</a>
                         </div>
                     </div>
-                    
+                    <div class="row mb-3">
+                    <form action="{{ route('admin.bahan.index') }}" method="GET" class="mb-4">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Cari Bahan..." name="search" value="{{ $search ?? '' }}">
+              <button class="btn btn-primary" type="submit">
+                <i class="bi bi-search"></i> Cari
+              </button>
+              @if(!empty($search))
+                <a href="{{ route('admin.bahan.index') }}" class="btn btn-secondary">
+                  <i class="bi bi-x-circle"></i> Reset
+                </a>
+              @endif
+            </div>
+          </form>
+         
                     @if(session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
                     @endif

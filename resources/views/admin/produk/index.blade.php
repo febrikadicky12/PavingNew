@@ -20,11 +20,28 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Daftar Produk</h5>
+
+                    <!-- Search Bar -->
                     
+
                     <div class="d-flex justify-content-end mb-3">
                         <a href="{{ route('admin.produk.create') }}" class="btn btn-primary">Tambah Produk</a>
                     </div>
-                    
+
+                    <form action="{{ route('admin.produk.index') }}" method="GET" class="mb-4">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Cari Produk..." name="search" value="{{ $search ?? '' }}">
+              <button class="btn btn-primary" type="submit">
+                <i class="bi bi-search"></i> Cari
+              </button>
+              @if(!empty($search))
+                <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary">
+                  <i class="bi bi-x-circle"></i> Reset
+                </a>
+              @endif
+            </div>
+          </form>
+
                     <!-- Table -->
                     <table class="table table-striped datatable">
                         <thead>
@@ -50,7 +67,7 @@
                                 <td>{{ ucfirst($item->tipe_harga) }}</td>
                                 <td>{{ $item->stok_produk }}</td>
                                 <td>
-                                <a href="{{ route('admin.produk.show', $item->id_produk) }}" class="btn btn-info btn-sm">Detail</a>
+                                    <a href="{{ route('admin.produk.show', $item->id_produk) }}" class="btn btn-info btn-sm">Detail</a>
                                     <a href="{{ route('admin.produk.edit', $item->id_produk) }}" class="btn btn-warning btn-sm">Edit</a>
                                     <form action="{{ route('admin.produk.destroy', $item->id_produk) }}" method="POST" class="d-inline">
                                         @csrf
