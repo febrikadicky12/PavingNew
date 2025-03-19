@@ -91,7 +91,7 @@
 
         <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.datamesin.index') }}">
-            <i class="bi bi-person-workspace"></i><span>Mesin</span>
+            <i class="bi bi-gear-fill"></i><span>Mesin</span>
           </a>
         </li>
 
