@@ -1231,3 +1231,13 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+.sidebar {
+  width: 300px; /* Atur lebar normal */
+  transition: width 0.3s ease, margin-left 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 0;
+  margin-left: -300px; /* Mendorong sidebar ke kiri agar benar-benar tersembunyi */
+  overflow: hidden; /* Mencegah konten sidebar terlihat */
+}

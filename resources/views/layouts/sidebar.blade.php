@@ -89,6 +89,12 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.datamesin.index') }}">
+            <i class="bi bi-person-workspace"></i><span>Mesin</span>
+          </a>
+        </li>
+
       </ul>
     </aside>
 
@@ -101,30 +107,30 @@
     <!-- ======= JavaScript untuk Sidebar ======= -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            const toggleBtn = document.querySelector(".toggle-sidebar-btn");
-            const sidebar = document.querySelector("#sidebar");
+    const toggleBtn = document.querySelector(".toggle-sidebar-btn");
+    const sidebar = document.querySelector("#sidebar");
 
-            function closeSidebar() {
-                sidebar.classList.add("collapsed");
-            }
+    function closeSidebar() {
+        sidebar.classList.add("collapsed");
+    }
 
-            toggleBtn.addEventListener("click", function () {
-                sidebar.classList.toggle("collapsed");
-            });
+    toggleBtn.addEventListener("click", function () {
+        sidebar.classList.toggle("collapsed");
+    });
 
-            document.addEventListener("click", function (event) {
-                if (!sidebar.contains(event.target) && !toggleBtn.contains(event.target)) {
-                    closeSidebar();
-                }
-            });
+    document.addEventListener("click", function (event) {
+        const isClickInsideSidebar = sidebar.contains(event.target);
+        const isClickOnToggleBtn = toggleBtn.contains(event.target);
 
-            const sidebarLinks = sidebar.querySelectorAll(".nav-link");
-            sidebarLinks.forEach(link => {
-                link.addEventListener("click", function () {
-                    closeSidebar();
-                });
-            });
-        });
+        // Jangan tutup sidebar jika klik terjadi pada submenu
+        const isSubmenuLink = event.target.closest("#pengelolaan-nav");
+        
+        if (!isClickInsideSidebar && !isClickOnToggleBtn && !isSubmenuLink) {
+            closeSidebar();
+        }
+    });
+});
+
     </script>
 
 </body>

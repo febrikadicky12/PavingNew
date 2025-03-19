@@ -21,9 +21,15 @@
                 <div class="card-body">
                     <h5 class="card-title">Daftar Produk</h5>
                     
+                    
                     <div class="d-flex justify-content-end mb-3">
                         <a href="{{ route('admin.produk.create') }}" class="btn btn-primary">Tambah Produk</a>
                     </div>
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="Cari Produk..." value="{{ request('search') }}">
+                <button type="submit" class="btn btn-primary ms-2">Cari</button>
+                     </div>
                     
                     <!-- Table -->
                     <table class="table table-striped datatable">

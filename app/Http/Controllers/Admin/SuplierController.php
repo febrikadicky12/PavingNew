@@ -25,7 +25,7 @@ class SuplierController extends Controller
         $request->validate([
             'nama_suplier' => 'required|string|max:255',
             'alamat' => 'required|string',
-            'no_telp' => 'required|string|max:15',
+            'no_telp' => 'required|integer|max:15',
         ]);
 
         // Simpan data ke database

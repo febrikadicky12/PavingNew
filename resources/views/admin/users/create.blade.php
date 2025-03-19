@@ -62,7 +62,7 @@
                 <label for="role">Role</label>
               </div>
             </div>
-            <div class="text-center">
+            <div class="text-start">
               <button type="submit" class="btn btn-primary">Simpan</button>
               <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Batal</a>
             </div>

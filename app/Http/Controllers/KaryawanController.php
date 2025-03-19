@@ -55,7 +55,7 @@ class KaryawanController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:50',
-            'no_telp' => 'required|string|size:12',
+            'no_telp' => 'required|integer|size:12',
             'status' => 'required|in:borongan,bulanan',
         ]);
 

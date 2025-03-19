@@ -9,8 +9,6 @@
 
         <div class="d-flex justify-content-between align-items-center mb-3">
             <form action="{{ route('admin.datamesin.index') }}" method="GET" class="d-flex">
-                <input type="text" name="search" class="form-control" placeholder="Cari mesin..." value="{{ request('search') }}">
-                <button type="submit" class="btn btn-primary ms-2">Cari</button>
             </form>
             
             <a href="{{ route('admin.datamesin.create') }}" class="btn btn-primary">Tambah Mesin</a>

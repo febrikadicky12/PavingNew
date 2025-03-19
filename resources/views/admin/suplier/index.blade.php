@@ -11,8 +11,9 @@
             {{ session('success') }}
         </div>
     @endif
-
+    <div class="d-flex justify-content-end mb-3">
     <a href="{{ route('admin.suplier.create') }}" class="btn btn-primary mb-3">Tambah Suplier</a>
+    </div>
 
     <table class="table table-bordered">
         <thead>

@@ -26,6 +26,10 @@
                             <a href="{{ route('admin.bahan.create') }}" class="btn btn-primary">Tambah Bahan</a>
                         </div>
                     </div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                    <input type="text" name="search" class="form-control" placeholder="Cari Bahan..." value="{{ request('search') }}">
+                <button type="submit" class="btn btn-primary ms-2">Cari</button>
+                     </div>
                     
                     @if(session('success'))
                         <div class="alert alert-success">{{ session('success') }}</div>
