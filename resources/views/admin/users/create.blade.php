@@ -62,7 +62,7 @@
                 <label for="role">Role</label>
               </div>
             </div>
-            <div class="text-start">
+            <div class="d-flex justify-content-end">
               <button type="submit" class="btn btn-primary">Simpan</button>
               <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Batal</a>
             </div>
