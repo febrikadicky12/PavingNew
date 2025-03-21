@@ -24,8 +24,8 @@
               <span>{{ Auth::user()->role }}</span>
             </li>
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
+            <a class="dropdown-item d-flex align-items-center" href="{{ route('profile.index') }}">
+            <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
             </li>
@@ -48,7 +48,7 @@
       <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{{ route('admin.dashboard') }}">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
           </a>
