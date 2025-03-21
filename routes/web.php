@@ -11,12 +11,21 @@ use App\Http\Controllers\Admin\MitraController;
 use App\Http\Controllers\Admin\ProduksiController;
 use App\Http\Controllers\Admin\SuplierController;
 use App\Http\Controllers\Admin\BahanController;
+use App\Http\Controllers\UserProfileController;
 
 
 
 // Halaman utama
 Route::get('/', function () {
     return view('auth.login');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.index');
+    Route::get('/profile/edit', [UserProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile/update', [UserProfileController::class, 'update'])->name('profile.update');
+    // Route::get('/profile/change-password', [UserProfileController::class, 'showChangePasswordForm'])->name('profile.change-password');
+    // Route::put('/profile/update-password', [UserProfileController::class, 'changePassword'])->name('profile.update-password');
 });
 
 // Authentication routes
