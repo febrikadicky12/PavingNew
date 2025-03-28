@@ -82,10 +82,6 @@
                 <div class="col-lg-9 col-md-8">{{ $user->updated_at->format('d M Y, H:i') }}</div>
               </div>
 
-              <div class="text-center mt-3">
-                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">
-                  <i class="bi bi-pencil"></i> Edit
-                </a>
                 <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
                   <i class="bi bi-arrow-left"></i> Kembali
                 </a>
