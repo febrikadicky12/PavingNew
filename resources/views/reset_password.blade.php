@@ -25,8 +25,8 @@
       border-color: #007bff;
     }
     .btn-info {
-      background-color: #17a2b8;
-      border-color: #17a2b8;
+      background-color:rgb(127, 127, 127);
+      border-color: rgb(127, 127, 127);
     }
   </style>
 </head>
