@@ -74,6 +74,10 @@
                                             </div>
                                         </div> -->
 
+                                        <div class="forgot-password">
+                                        <a href="{{ route('reset.password') }}">Forgot Password?</a>
+                                        </div>
+
                                         <div class="col-12">
                                             <button class="btn btn-primary w-100" type="submit">Login</button>
                                         </div>

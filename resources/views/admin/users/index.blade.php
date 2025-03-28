@@ -21,18 +21,18 @@
           <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
             <h5 class="card-title">Daftar Karyawan</h5>
             <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
-              <i></i> Tambah Karyawan
+              <i class="bi bi-person-plus"></i> Tambah Karyawan
             </a>
           </div>
 
           <!-- Search Form -->
           <form action="{{ route('admin.users.index') }}" method="GET" class="mb-4">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Cari karyawan..." name="search" value="{{ $search ?? '' }}">
+              <input type="text" class="form-control" placeholder="Cari karyawan..." name="search" value="{{ request('search') }}">
               <button class="btn btn-primary" type="submit">
                 <i class="bi bi-search"></i> Cari
               </button>
-              @if(!empty($search))
+              @if(request('search'))
                 <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
                   <i class="bi bi-x-circle"></i> Reset
                 </a>
@@ -47,7 +47,7 @@
             </div>
           @endif
 
-          <!-- Table with stripped rows -->
+          <!-- Table -->
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -55,6 +55,7 @@
                   <th scope="col">No</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Email</th>
+                  <th scope="col">Nomor Telepon</th>
                   <th scope="col">Role</th>
                   <th scope="col">Dibuat Pada</th>
                   <th scope="col">Aksi</th>
@@ -66,6 +67,7 @@
                   <th scope="row">{{ $index + $users->firstItem() }}</th>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
+                  <td>{{ $user->phone ?? '-' }}</td>
                   <td>
                     @if($user->role == 'karyawan_borongan')
                       <span class="badge bg-success">Karyawan Borongan</span>
@@ -94,7 +96,7 @@
                 </tr>
                 @empty
                 <tr>
-                  <td colspan="6" class="text-center">Tidak ada data karyawan</td>
+                  <td colspan="7" class="text-center">Tidak ada data karyawan</td>
                 </tr>
                 @endforelse
               </tbody>

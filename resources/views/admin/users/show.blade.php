@@ -57,6 +57,11 @@
               </div>
 
               <div class="row">
+                <div class="col-lg-3 col-md-4 label">Nomor Telepon</div>
+                <div class="col-lg-9 col-md-8">{{ $user->phone ?? '-' }}</div>
+              </div>
+
+              <div class="row">
                 <div class="col-lg-3 col-md-4 label">Role</div>
                 <div class="col-lg-9 col-md-8">
                   @if($user->role == 'karyawan_borongan')

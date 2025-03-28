@@ -15,6 +15,7 @@ class UserController extends Controller
         $users = User::when($search, function($query) use ($search) {
             return $query->where('name', 'like', "%{$search}%")
                         ->orWhere('email', 'like', "%{$search}%")
+                        ->orWhere('phone', 'like', "%{$search}%")
                         ->orWhere('role', 'like', "%{$search}%");
         })->paginate(10);
 
@@ -32,6 +33,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
+            'phone' => 'required|string|digits_between:10,15|unique:users',
             'role' => 'required|in:admin,karyawan_borongan,karyawan_bulanan',
         ]);
 
@@ -39,6 +41,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'phone' => $request->phone,
             'role' => $request->role,
         ]);
 
@@ -60,12 +63,14 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            'phone' => 'required|string|digits_between:10,15|unique:users,phone,'.$user->id,
             'role' => 'required|in:admin,karyawan_borongan,karyawan_bulanan',
         ]);
 
         $data = [
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'role' => $request->role,
         ];
 

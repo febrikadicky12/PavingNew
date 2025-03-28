@@ -38,7 +38,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Harga Produk</label>
-                            <input type="number" name="harga_produk" class="form-control" value="{{ $produk->harga_produk }}" required>
+                            <input type="text" name="harga_produk" class="form-control" value="{{ $produk->harga_produk }}" required>
                         </div>
 
                         <div class="mb-3">
@@ -56,7 +56,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Stok Produk</label>
-                            <input type="number" name="stok_produk" class="form-control" value="{{ $produk->stok_produk }}" required>
+                            <input type="text" name="stok_produk" class="form-control" value="{{ $produk->stok_produk }}" required>
                         </div>
                         <div class="d-flex justify-content-end mb-3">
                             <button type="submit" class="btn btn-primary">Update Produk</button>

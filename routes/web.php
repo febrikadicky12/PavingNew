@@ -12,10 +12,15 @@ use App\Http\Controllers\Admin\ProduksiController;
 use App\Http\Controllers\Admin\SuplierController;
 use App\Http\Controllers\Admin\BahanController;
 use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\ResetPasswordController;
 
 
 
 // Halaman utama
+Route::get('/reset-password', [ResetPasswordController::class, 'reset_password'])->name('reset.password');
+Route::post('/reset-password-proses', [ResetPasswordController::class, 'reset_password_proses']);
+
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -160,6 +165,10 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/mitra/{id}', [MitraController::class, 'update'])->name('mitra.update');
     Route::delete('/mitra/{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
 });
+
+
+
+
 
 });
 

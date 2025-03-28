@@ -54,6 +54,12 @@
               </div>
             </div>
             <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Nomor Telepon" value="{{ old('phone', $user->phone) }}" required>
+                <label for="phone">Nomor Telepon</label>
+              </div>
+            </div>
+            <div class="col-md-12">
               <div class="form-floating mb-3">
                 <select class="form-select" id="role" name="role" aria-label="Role" required>
                   <option value="" disabled>Pilih Role</option>
