@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<main id="main" class="main">
 <section class="content-section">
     <div class="col-lg-8 mx-auto">
         <h2>Edit Bahan</h2>
@@ -51,7 +52,7 @@
                 <input type="text" name="satuan" id="satuan" class="form-control" value="{{ old('satuan', $bahan->satuan) }}" required>
             </div>
             <div class="d-flex justify-content-end mb-3">
-                <button type="submit" class="btn btn-primary">Update Bahan</button>
+                <button type="submit" class="btn btn-primary">Update</button>
                 <a href="{{ route('admin.bahan.index') }}" class="btn btn-secondary ms-2">Batal</a>
             </div>
         </form>

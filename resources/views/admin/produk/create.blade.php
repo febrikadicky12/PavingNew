@@ -3,6 +3,7 @@
 @section('title', 'Tambah Produk')
 
 @section('content')
+<main id="main" class="main">
 
 <div class="container">
     <h1>Tambah Produk</h1>

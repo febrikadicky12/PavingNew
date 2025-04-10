@@ -3,6 +3,7 @@
 @section('title', 'Daftar Mitra')
 
 @section('content')
+<main id="main" class="main">
 <section class="content-section">
     <div class="container mt-4">
         <h1>Daftar Mitra</h1>

@@ -1,0 +1,120 @@
+@extends('layouts.master')
+
+@section('title', 'Edit Produksi')
+
+@section('content')
+<main id="main" class="main">
+<div class="container">
+    <h2>Edit Produksi</h2>
+
+    {{-- Pastikan nilai id_produksi ada --}}
+    <form action="{{ route('admin.produksi.update', $produksi->id_produksi) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <div class="mb-3">
+            <label class="form-label">Produk:</label>
+            <select name="id_produk" class="form-control @error('id_produk') is-invalid @enderror">
+                <option value="" disabled>Pilih Produk</option>
+                @foreach ($produk as $p)
+                    <option value="{{ $p->id_produk }}" {{ old('id_produk', $produksi->id_produk) == $p->id_produk ? 'selected' : '' }}>
+                        {{ $p->nama_produk }}
+                    </option>
+                @endforeach
+            </select>
+            @error('id_produk')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Tanggal Produksi:</label>
+            <input type="date" name="tanggal_produksi" class="form-control @error('tanggal_produksi') is-invalid @enderror"
+                   value="{{ old('tanggal_produksi', $produksi->tanggal_produksi) }}" required>
+            @error('tanggal_produksi')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Jumlah Produksi:</label>
+            <input type="number" name="jumlah_produksi" class="form-control @error('jumlah_produksi') is-invalid @enderror"
+                   value="{{ old('jumlah_produksi', $produksi->jumlah_produksi) }}" required min="1">
+            @error('jumlah_produksi')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Bahan yang Digunakan:</label>
+            <select name="id_bahan" class="form-control @error('id_bahan') is-invalid @enderror">
+                <option value="" disabled>Pilih Bahan</option>
+                @foreach ($bahan as $b)
+                    <option value="{{ $b->id_bahan }}" {{ old('id_bahan', $produksi->id_bahan) == $b->id_bahan ? 'selected' : '' }}>
+                        {{ $b->nama_bahan }} (Stok: {{ $b->stock_bahan }})
+                    </option>
+                @endforeach
+            </select>
+            @error('id_bahan')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Karyawan:</label>
+            <select name="id_karyawan" class="form-control @error('id_karyawan') is-invalid @enderror">
+                <option value="" disabled>Pilih Karyawan</option>
+                @foreach ($karyawan as $k)
+                    <option value="{{ $k->id_karyawan }}" {{ old('id_karyawan', $produksi->id_karyawan) == $k->id_karyawan ? 'selected' : '' }}>
+                        {{ $k->nama }}
+                    </option>
+                @endforeach
+            </select>
+            @error('id_karyawan')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Mesin:</label>
+            <select name="id_mesin" class="form-control @error('id_mesin') is-invalid @enderror">
+                <option value="" disabled>Pilih Mesin</option>
+                @foreach ($mesin as $m)
+                    <option value="{{ $m->id}}" {{ old('id_mesin', $produksi->id) == $m->id? 'selected' : '' }}>
+                        {{ $m->nama_mesin }}
+                    </option>
+                @endforeach
+            </select>
+            @error('id_mesin')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Status Produksi:</label>
+            <select name="status_produksi" class="form-control @error('status_produksi') is-invalid @enderror">
+                <option value="" disabled>Pilih Status</option>
+                <option value="proses" {{ old('status_produksi', $produksi->status_produksi) == 'proses' ? 'selected' : '' }}>Proses</option>
+                <option value="sudah" {{ old('status_produksi', $produksi->status_produksi) == 'sudah' ? 'selected' : '' }}>Sudah</option>
+            </select>
+            @error('status_produksi')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">ID Total Produksi:</label>
+            <input type="number" name="id_totalproduksi" class="form-control @error('id_totalproduksi') is-invalid @enderror"
+                   value="{{ old('id_totalproduksi', $produksi->id_totalproduksi) }}" required>
+            @error('id_totalproduksi')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="d-flex justify-content-end mb-3">
+            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="{{ route('admin.produksi.index') }}" class="btn btn-secondary ms-2">Batal</a>
+        </div>
+    </form>
+</div>
+@endsection

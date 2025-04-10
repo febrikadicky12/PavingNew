@@ -10,7 +10,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item active">Profile</li>
+          <li class="breadcrumb-item active">Profil</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -58,7 +58,7 @@
                 </li>
 
                 <li class="nav-item">
-                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+                  <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profil</button>
                 </li>
 
                 <!-- <li class="nav-item">
@@ -69,10 +69,10 @@
               <div class="tab-content pt-2">
 
                 <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                  <h5 class="card-title">Profile Details</h5>
+                  <h5 class="card-title">Detail Profil</h5>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label ">Full Name</div>
+                    <div class="col-lg-3 col-md-4 label ">Nama Lengkap</div>
                     <div class="col-lg-9 col-md-8">{{ $user->name }}</div>
                   </div>
 
@@ -87,7 +87,7 @@
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Member Since</div>
+                    <div class="col-lg-3 col-md-4 label">Terdaftar Sejak</div>
                     <div class="col-lg-9 col-md-8">{{ $user->created_at->format('d F Y') }}</div>
                   </div>
 
@@ -118,7 +118,7 @@
                     </div> -->
 
                     <div class="row mb-3">
-                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                      <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="fullName" value="{{ old('name', $user->name) }}">
                         @error('name')
@@ -138,7 +138,7 @@
                     </div>
 
                     <div class="text-center">
-                      <button type="submit" class="btn btn-primary">Save Changes</button>
+                      <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                     </div>
                   </form><!-- End Profile Edit Form -->
 

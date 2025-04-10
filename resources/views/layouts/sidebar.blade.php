@@ -72,7 +72,7 @@
           </a>
           <ul id="pengelolaan-nav" class="nav-content collapse">
             <li><a href="{{ route('admin.produk.index') }}"><i class="bi bi-circle"></i> Produk</a></li>
-            <li><a href="{{ route('admin.produksi.create') }}"><i class="bi bi-circle"></i> Produksi</a></li>
+            <li><a href="{{ route('admin.produksi.index') }}"><i class="bi bi-circle"></i> Produksi</a></li>
             <li><a href="{{ route('admin.bahan.index') }}"><i class="bi bi-circle"></i> Bahan</a></li>
           </ul>
         </li>
@@ -90,7 +90,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('admin.datamesin.index') }}">
+          <a class="nav-link" href="{{ route('admin.mesin.index') }}">
             <i class="bi bi-gear-fill"></i><span>Mesin</span>
           </a>
         </li>

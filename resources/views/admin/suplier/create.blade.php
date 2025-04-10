@@ -3,6 +3,7 @@
 @section('title', 'Form Tambah Suplier')
 
 @section('content')
+<main id="main" class="main">
 <section class="content-section">
     <div class="row">
     <div class="col-lg-8 mx-auto">

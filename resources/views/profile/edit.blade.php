@@ -10,8 +10,8 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-          <li class="breadcrumb-item"><a href="{{ route('profile.index') }}">Profile</a></li>
-          <li class="breadcrumb-item active">Edit Profile</li>
+          <li class="breadcrumb-item"><a href="{{ route('profile.index') }}">Profil</a></li>
+          <li class="breadcrumb-item active">Edit Profil</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -22,7 +22,7 @@
 
           <div class="card">
             <div class="card-body pt-3">
-              <h5 class="card-title">Edit Profile Information</h5>
+              <h5 class="card-title">Edit Informasi Profil</h5>
 
               <!-- Profile Edit Form -->
               <form action="{{ route('profile.update') }}" method="POST" enctype="multipart/form-data">
@@ -30,7 +30,7 @@
                 @method('PUT')
                 
                 <div class="row mb-3">
-                  <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
+                  <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profil Image</label>
                   <div class="col-md-8 col-lg-9">
                     @if($user->profile_image)
                       <img src="{{ asset('images/profile/'.$user->profile_image) }}" alt="Profile" class="img-fluid rounded" style="max-width: 200px;">
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="row mb-3">
-                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                  <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Nama Lengkap</label>
                   <div class="col-md-8 col-lg-9">
                     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="fullName" value="{{ old('name', $user->name) }}">
                     @error('name')
@@ -71,12 +71,12 @@
                   <label class="col-md-4 col-lg-3 col-form-label">Role</label>
                   <div class="col-md-8 col-lg-9">
                     <input type="text" class="form-control" value="{{ ucfirst($user->role) }}" disabled readonly>
-                    <small class="text-muted">Role cannot be changed from this form</small>
+                    <small class="text-muted">Role tidak dapat diubah dari formulir ini</small>
                   </div>
                 </div>
 
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                  <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                   <a href="{{ route('profile.index') }}" class="btn btn-secondary">Cancel</a>
                 </div>
               </form><!-- End Profile Edit Form -->

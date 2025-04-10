@@ -3,6 +3,7 @@
 @section('title', 'Detail Produk')
 
 @section('content')
+<main id="main" class="main">
 
 <div class="pagetitle">
     <h1>Detail Produk</h1>
@@ -27,8 +28,9 @@
                     <p><strong>Ukuran:</strong> {{ $produk->ukuran_produk }}</p>
                     <p><strong>Tipe Harga:</strong> {{ ucfirst($produk->tipe_harga) }}</p>
                     <p><strong>Stok:</strong> {{ $produk->stok_produk }}</p>
-
-                    <a href="{{ route('admin.produk.index') }}" class="btn btn-primary">Kembali</a>
+                    
+                    <div class="d-flex justify-content-end mb-3">
+                    <a href="{{ route('admin.produk.index') }}" class="btn btn-secondary">Kembali</a>
 
                 </div>
             </div>
