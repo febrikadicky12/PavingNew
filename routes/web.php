@@ -17,13 +17,11 @@ use App\Http\Controllers\Karyawan\AbsenController;
 use App\Http\Controllers\Admin\BahanController;
 use App\Http\Controllers\Admin\NilaiProdukController;
 use App\Http\Controllers\UserProfileController;
-<<<<<<< HEAD
+
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Models\Produk;
-=======
-use App\Http\Controllers\ResetPasswordController;
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
+
 
 
 
@@ -303,17 +301,5 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('/mitra/{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
 });
 
-<<<<<<< HEAD
-
-
-Route::get('/reset-password', [ResetPasswordController::class, 'reset_password'])->name('reset.password');
-Route::post('/reset-password-proses', [ResetPasswordController::class, 'reset_password_proses']);
-
-
-=======
-Route::fallback(function () {
-    abort(404, 'Route fallback kena. Mungkin ada route lama masih dipakai.');
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
 });
 
-});
