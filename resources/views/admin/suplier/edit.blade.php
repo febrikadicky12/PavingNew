@@ -3,6 +3,7 @@
 @section('title', 'Edit Suplier')
 
 @section('content')
+<main id="main" class="main">
 <section class="content-section">
     <div class="col-lg-8 mx-auto">
         <h2>Edit Suplier</h2>
@@ -33,7 +34,7 @@
             </div>
 
             <div class="d-flex justify-content-end mb-3">
-                <button type="submit" class="btn btn-primary">Update Suplier</button>
+                <button type="submit" class="btn btn-primary">Update</button>
                 <a href="{{ route('admin.suplier.index') }}" class="btn btn-secondary ms-2">Batal</a>
             </div>        
         </form>

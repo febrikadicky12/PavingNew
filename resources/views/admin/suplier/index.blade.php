@@ -3,6 +3,7 @@
 @section('title', 'Daftar Suplier')
 
 @section('content')
+<main id="main" class="main">
 <div class="container mt-4">
     <h2>Daftar Suplier</h2>
     @if(session('success'))

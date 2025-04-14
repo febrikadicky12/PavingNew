@@ -125,7 +125,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" href="{{ route('admin.datamesin.index') }}">
+          <a class="nav-link" href="{{ route('admin.mesin.index') }}">
             <i class="bi bi-gear-fill"></i><span>Mesin</span>
           </a>
         </li>

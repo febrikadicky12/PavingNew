@@ -3,6 +3,7 @@
 @section('title', 'Kelola Produk')
 
 @section('content')
+<main id="main" class="main">
 
 <div class="container">
     <h1>Kelola Produk</h1>
@@ -43,6 +44,7 @@
           </form>
 
                     <!-- Table -->
+                    <div class="table-responsive">
                     <table class="table table-striped datatable">
                         <thead>
                             <tr>

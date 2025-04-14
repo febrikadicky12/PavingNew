@@ -3,7 +3,11 @@
 @section('title', 'Edit Karyawan')
 
 @section('content')
+<<<<<<< HEAD
 
+=======
+<main id="main" class="main">
+>>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
 <div class="pagetitle">
   <h1>Edit Karyawan</h1>
   <nav>
@@ -55,6 +59,7 @@
                 <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ old('phone_number', $user->phone_number) }}" required>
               </div>
             </div>
+<<<<<<< HEAD
 
             <div class="row mb-3">
               <label for="password" class="col-sm-2 col-form-label">Password (Kosongkan jika tidak ingin mengubah)</label>
@@ -70,6 +75,20 @@
                   <option selected disabled>Pilih Role</option>
                   <option value="karyawan_borongan" {{ (old('role', $user->role) == 'karyawan_borongan') ? 'selected' : '' }}>Karyawan Borongan</option>
                   <option value="karyawan_bulanan" {{ (old('role', $user->role) == 'karyawan_bulanan') ? 'selected' : '' }}>Karyawan Bulanan</option>
+=======
+            <div class="col-md-12">
+              <div class="form-floating">
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Nomor Telepon" value="{{ old('phone', $user->phone) }}" required>
+                <label for="phone">Nomor Telepon</label>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-floating mb-3">
+                <select class="form-select" id="role" name="role" aria-label="Role" required>
+                  <option value="" disabled>Pilih Role</option>
+                  <option value="karyawan_borongan" {{ old('role', $user->role) == 'karyawan_borongan' ? 'selected' : '' }}>Karyawan Borongan</option>
+                  <option value="karyawan_bulanan" {{ old('role', $user->role) == 'karyawan_bulanan' ? 'selected' : '' }}>Karyawan Bulanan</option>
+>>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
                 </select>
               </div>
             </div>

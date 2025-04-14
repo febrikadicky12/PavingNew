@@ -3,6 +3,7 @@
 @section('title', 'Kelola Bahan')
 
 @section('content')
+<main id="main" class="main">
 
 <div class="pagetitle">
     <h1>Kelola Bahan</h1>

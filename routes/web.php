@@ -17,13 +17,21 @@ use App\Http\Controllers\Karyawan\AbsenController;
 use App\Http\Controllers\Admin\BahanController;
 use App\Http\Controllers\Admin\NilaiProdukController;
 use App\Http\Controllers\UserProfileController;
+<<<<<<< HEAD
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Models\Produk;
+=======
+use App\Http\Controllers\ResetPasswordController;
+>>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
 
 
 
 // Halaman utama
+Route::get('/reset-password', [ResetPasswordController::class, 'reset_password'])->name('reset.password');
+Route::post('/reset-password-proses', [ResetPasswordController::class, 'reset_password_proses']);
+
+
 Route::get('/', function () {
     return view('auth.login');
 });
@@ -103,15 +111,15 @@ Route::middleware(['auth'])->group(function () {
         ]);
     });
     
-    // Admin data mesin routes
+    // Admin mesin routes
     Route::prefix('admin')->name('admin.')->group(function () {
-        Route::get('/datamesin', [MesinController::class, 'index'])->name('datamesin.index');
-        Route::get('/datamesin/create', [MesinController::class, 'create'])->name('datamesin.create');
-        Route::post('/datamesin', [MesinController::class, 'store'])->name('datamesin.store');
-        Route::get('/datamesin/{mesin}', [MesinController::class, 'show'])->name('datamesin.show');
-        Route::get('/datamesin/{mesin}/edit', [MesinController::class, 'edit'])->name('datamesin.edit');
-        Route::put('/datamesin/{mesin}', [MesinController::class, 'update'])->name('datamesin.update');
-        Route::delete('/datamesin/{mesin}', [MesinController::class, 'destroy'])->name('datamesin.destroy');
+        Route::get('/mesin', [MesinController::class, 'index'])->name('mesin.index');
+        Route::get('/mesin/create', [MesinController::class, 'create'])->name('mesin.create');
+        Route::post('/mesin', [MesinController::class, 'store'])->name('mesin.store');
+        Route::get('/mesin/{mesin}', [MesinController::class, 'show'])->name('mesin.show');
+        Route::get('/mesin/{mesin}/edit', [MesinController::class, 'edit'])->name('mesin.edit');
+        Route::put('/mesin/{mesin}', [MesinController::class, 'update'])->name('mesin.update');
+        Route::delete('/mesin/{mesin}', [MesinController::class, 'destroy'])->name('mesin.destroy');
     });
 
     // NilaiProduk routes - Add this to the existing admin routes prefix
@@ -134,10 +142,10 @@ Route::resource('nilaiproduk', \App\Http\Controllers\Admin\NilaiProdukController
         Route::get('/produksi', [ProduksiController::class, 'index'])->name('produksi.index');
         Route::get('/produksi/create', [ProduksiController::class, 'create'])->name('produksi.create');
         Route::post('/produksi', [ProduksiController::class, 'store'])->name('produksi.store');
-        Route::get('/produksi/{id}/edit', [ProduksiController::class, 'edit'])->name('produksi.edit');
-        Route::put('/produksi/{id}', [ProduksiController::class, 'update'])->name('produksi.update');
-        Route::delete('/produksi/{id}', [ProduksiController::class, 'destroy'])->name('produksi.destroy');
-        Route::get('/produksi/{id}', [ProduksiController::class, 'show'])->name('produksi.show'); // Tambahkan ini
+        Route::get('/produksi/{id_produk}/edit', [ProduksiController::class, 'edit'])->name('produksi.edit');
+        Route::put('/produksi/{id_produksi}', [ProduksiController::class, 'update'])->name('produksi.update');
+        Route::delete('/produksi/{id_produksi}', [ProduksiController::class, 'destroy'])->name('produksi.destroy');
+        Route::get('/produksi/{id_produksi}', [ProduksiController::class, 'show'])->name('produksi.show'); // Tambahkan ini
     });
 
    // TotalProduksi routes with report, export, and print functionality
@@ -295,11 +303,17 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::delete('/mitra/{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
 });
 
+<<<<<<< HEAD
 
 
 Route::get('/reset-password', [ResetPasswordController::class, 'reset_password'])->name('reset.password');
 Route::post('/reset-password-proses', [ResetPasswordController::class, 'reset_password_proses']);
 
 
+=======
+Route::fallback(function () {
+    abort(404, 'Route fallback kena. Mungkin ada route lama masih dipakai.');
+>>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
 });
 
+});

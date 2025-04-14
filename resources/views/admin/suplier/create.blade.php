@@ -3,6 +3,7 @@
 @section('title', 'Form Tambah Suplier')
 
 @section('content')
+<main id="main" class="main">
 <section class="content-section">
     <div class="row">
     <div class="col-lg-8 mx-auto">
@@ -21,18 +22,15 @@
 
         <form action="{{ route('admin.suplier.store') }}" method="POST">
             @csrf
-            <div class="col-md-12">
-              <div class="form-floating mb-3">
+            <div class="mb-3">
                 <label>Nama Suplier</label>
                 <input type="text" name="nama_suplier" class="form-control" required>
             </div>
-            <div class="col-md-12">
-              <div class="form-floating mb-3">
+            <div class="mb-3">
                 <label>Alamat</label>
                 <input type="text" name="alamat" class="form-control" required>
             </div>
-            <div class="col-md-12">
-            <div class="form-floating mb-3">
+            <div class="mb-3">
                 <label>No Telp</label>
                 <input type="text" name="no_telp" class="form-control" required>
             </div>

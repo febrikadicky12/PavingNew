@@ -3,6 +3,7 @@
 @section('title', 'Tambah Bahan')
 
 @section('content')
+<main id="main" class="main">
 <section class="content-section">
     <div class="col-lg-8 mx-auto">
         <div class="card shadow-sm rounded-lg p-4">

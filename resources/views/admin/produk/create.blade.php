@@ -3,6 +3,7 @@
 @section('title', 'Tambah Produk')
 
 @section('content')
+<main id="main" class="main">
 
 <div class="container">
     <h1>Tambah Produk</h1>
@@ -36,7 +37,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Harga Produk</label>
-                            <input type="number" name="harga_produk" value="{{ old('harga_produk') }}" class="form-control" step="any" min="0" onwheel="this.blur()">
+                            <input type="text" name="harga_produk" value="{{ old('harga_produk') }}" class="form-control" step="any" min="0" onwheel="this.blur()">
                             </div>
 
                         <div class="mb-3">
@@ -54,7 +55,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Stok Produk</label>
-                            <input type="number" name="stok_produk" class="form-control" required>
+                            <input type="text" name="stok_produk" class="form-control" required>
                         </div>
                         <div class="d-flex justify-content-end mb-3">
                             <button type="submit" class="btn btn-primary">Simpan</button>
