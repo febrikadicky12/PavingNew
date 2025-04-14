@@ -8,62 +8,103 @@ use Illuminate\Http\Request;
 
 class SuplierController extends Controller
 {
-    public function index()
+    /**
+     * Display a listing of the suppliers.
+     */
+    public function index(Request $request)
     {
-        $supliers = Suplier::all();
+        $search = $request->input('search');
+        
+        $supliers = Suplier::when($search, function ($query) use ($search) {
+            $query->where('nama_suplier', 'like', "%$search%")
+                  ->orWhere('alamat', 'like', "%$search%")
+                  ->orWhere('no_telp', 'like', "%$search%");
+        })->get();
+        
         return view('admin.suplier.index', compact('supliers'));
     }
 
+    /**
+     * Show the form for creating a new supplier.
+     */
     public function create()
     {
         return view('admin.suplier.create');
     }
 
+    /**
+     * Store a newly created supplier in storage.
+     */
     public function store(Request $request)
     {
-        // Validasi data
         $request->validate([
-            'nama_suplier' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'no_telp' => 'required|integer|max:15',
+            'nama_suplier' => 'required|string|max:50',
+            'alamat' => 'required|string|max:50',
+            'no_telp' => 'required|string|max:13',
         ]);
 
-        // Simpan data ke database
-        Suplier::create([
-            'nama_suplier' => $request->nama_suplier,
-            'alamat' => $request->alamat,
-            'no_telp' => $request->no_telp,
-        ]);
+        Suplier::create($request->all());
 
-        // Redirect ke halaman daftar supplier dengan pesan sukses
-        return redirect()->route('admin.suplier.index')->with('success', 'Supplier berhasil ditambahkan!');
+        return redirect()->route('admin.suplier.index')
+                        ->with('success', 'Suplier berhasil ditambahkan!');
     }
 
-    public function edit(Suplier $suplier)
+    /**
+     * Display the specified supplier.
+     */
+    public function show($id)
     {
+        $suplier = Suplier::findOrFail($id);
+        // Get related materials and purchases for this supplier
+        $bahans = $suplier->bahans;
+        $pembelians = $suplier->pembelians;
+        
+        return view('admin.suplier.show', compact('suplier', 'bahans', 'pembelians'));
+    }
+
+    /**
+     * Show the form for editing the specified supplier.
+     */
+    public function edit($id)
+    {
+        $suplier = Suplier::findOrFail($id);
         return view('admin.suplier.edit', compact('suplier'));
     }
 
-    public function update(Request $request, Suplier $suplier)
+    /**
+     * Update the specified supplier in storage.
+     */
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_suplier' => 'required|string|max:255',
-            'alamat' => 'required|string',
-            'no_telp' => 'required|string|max:15',
+            'nama_suplier' => 'required|string|max:50',
+            'alamat' => 'required|string|max:50',
+            'no_telp' => 'required|string|max:13',
         ]);
 
-        $suplier->update([
-            'nama_suplier' => $request->nama_suplier,
-            'alamat' => $request->alamat,
-            'no_telp' => $request->no_telp,
-        ]);
+        $suplier = Suplier::findOrFail($id);
+        $suplier->update($request->all());
 
-        return redirect()->route('admin.suplier.index')->with('success', 'Supplier berhasil diperbarui!');
+        return redirect()->route('admin.suplier.index')
+                        ->with('success', 'Suplier berhasil diperbarui!');
     }
 
-    public function destroy(Suplier $suplier)
+    /**
+     * Remove the specified supplier from storage.
+     */
+    public function destroy($id)
     {
+        $suplier = Suplier::findOrFail($id);
+        
+        // Check if this supplier has related materials or purchases
+        if ($suplier->bahans()->count() > 0 || $suplier->pembelians()->count() > 0) {
+            return redirect()->route('admin.suplier.index')
+                            ->with('error', 'Suplier tidak dapat dihapus karena masih memiliki bahan atau pembelian terkait!');
+        }
+        
         $suplier->delete();
-        return redirect()->route('admin.suplier.index')->with('success', 'Supplier berhasil dihapus!');
+
+        return redirect()->route('admin.suplier.index')
+                        ->with('success', 'Suplier berhasil dihapus!');
     }
 }

@@ -67,15 +67,50 @@
         </li>
 
         <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.pembelian.index') }}">
+            <i class="bi bi-people"></i><span>Pembelian</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.penjualan.index') }}">
+            <i class="bi bi-people"></i><span>Penjualan</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route('admin.rekap_absen.index') }}">
+            <i class="bi bi-people"></i><span>Rekap Absen</span>
+          </a>
+        </li>
+
+
+        <li class="nav-item">
+  <a class="nav-link collapsed" data-bs-toggle="collapse" href="#gaji-nav">
+    <i class="bi bi-cash-coin"></i><span>Gaji & Penggajian</span><i class="bi bi-chevron-down ms-auto"></i>
+  </a>
+  <ul id="gaji-nav" class="nav-content collapse">
+    <li><a href="{{ route('admin.gaji.index') }}"><i class="bi bi-circle"></i> Data Gaji</a></li>
+    <li><a href="{{ route('admin.penggajian.bulanan.index') }}"><i class="bi bi-circle"></i> PenggajianBulanan</a></li>
+
+  </ul>
+</li>
+
+        <li class="nav-item">
           <a class="nav-link collapsed" data-bs-toggle="collapse" href="#pengelolaan-nav">
             <i class="bi bi-box2-fill"></i><span>Pengelolaan</span><i class="bi bi-chevron-down ms-auto"></i>
           </a>
           <ul id="pengelolaan-nav" class="nav-content collapse">
             <li><a href="{{ route('admin.produk.index') }}"><i class="bi bi-circle"></i> Produk</a></li>
-            <li><a href="{{ route('admin.produksi.create') }}"><i class="bi bi-circle"></i> Produksi</a></li>
+            <li><a href="{{ route('admin.produksi.index') }}"><i class="bi bi-circle"></i> Produksi</a></li>
             <li><a href="{{ route('admin.bahan.index') }}"><i class="bi bi-circle"></i> Bahan</a></li>
+            <li><a href="{{ route('admin.totalproduksi.index') }}"><i class="bi bi-circle"></i> TotalProduksi</a></li>
+            <li><a href="{{ route('admin.nilaiproduk.index') }}"><i class="bi bi-circle"></i> NilaiProduk</a></li>
           </ul>
         </li>
+
+   
+
 
         <li class="nav-item">
           <a class="nav-link" href="{{ route('admin.suplier.index') }}">

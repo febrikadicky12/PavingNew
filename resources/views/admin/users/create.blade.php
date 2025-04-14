@@ -3,11 +3,12 @@
 @section('title', 'Tambah Karyawan')
 
 @section('content')
+
 <div class="pagetitle">
   <h1>Tambah Karyawan</h1>
   <nav>
     <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Dashboard</a></li>
+      <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
       <li class="breadcrumb-item"><a href="{{ route('admin.users.index') }}">Daftar Karyawan</a></li>
       <li class="breadcrumb-item active">Tambah Karyawan</li>
     </ol>
@@ -23,7 +24,7 @@
 
           @if($errors->any())
             <div class="alert alert-danger">
-              <ul class="mb-0">
+              <ul>
                 @foreach($errors->all() as $error)
                   <li>{{ $error }}</li>
                 @endforeach
@@ -31,46 +32,58 @@
             </div>
           @endif
 
-          <!-- Form -->
-          <form action="{{ route('admin.users.store') }}" method="POST" class="row g-3">
+          <form action="{{ route('admin.users.store') }}" method="POST">
             @csrf
-            <div class="col-md-12">
-              <div class="form-floating">
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" value="{{ old('name') }}" required>
-                <label for="name">Nama Lengkap</label>
+            <div class="row mb-3">
+              <label for="name" class="col-sm-2 col-form-label">Nama Lengkap</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="form-floating">
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
-                <label for="email">Email</label>
+
+            <div class="row mb-3">
+              <label for="email" class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="form-floating">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
-                <label for="password">Password</label>
+
+            <div class="row mb-3">
+              <label for="phone_number" class="col-sm-2 col-form-label">Nomor Telepon</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" required>
               </div>
             </div>
-            <div class="col-md-12">
-              <div class="form-floating mb-3">
-                <select class="form-select" id="role" name="role" aria-label="Role" required>
-                  <option value="" selected disabled>Pilih Role</option>
+
+            <div class="row mb-3">
+              <label for="password" class="col-sm-2 col-form-label">Password</label>
+              <div class="col-sm-10">
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <label class="col-sm-2 col-form-label">Role</label>
+              <div class="col-sm-10">
+                <select class="form-select" name="role" required>
+                  <option selected disabled>Pilih Role</option>
                   <option value="karyawan_borongan" {{ old('role') == 'karyawan_borongan' ? 'selected' : '' }}>Karyawan Borongan</option>
                   <option value="karyawan_bulanan" {{ old('role') == 'karyawan_bulanan' ? 'selected' : '' }}>Karyawan Bulanan</option>
                 </select>
-                <label for="role">Role</label>
               </div>
             </div>
-            <div class="d-flex justify-content-end">
-              <button type="submit" class="btn btn-primary">Simpan</button>
-              <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Batal</a>
+
+            <div class="row mb-3">
+              <div class="col-sm-10 offset-sm-2">
+                <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">Batal</a>
+              </div>
             </div>
           </form>
-          <!-- End Form -->
         </div>
       </div>
     </div>
   </div>
 </section>
+
 @endsection

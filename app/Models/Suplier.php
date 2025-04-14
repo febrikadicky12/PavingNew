@@ -9,15 +9,41 @@ class Suplier extends Model
 {
     use HasFactory;
 
-    protected $table = 'suplier'; // Ubah jika tabel di DB bernama 'supliers'
-    protected $primaryKey = 'id_suplier'; // Pastikan sesuai dengan kolom primary key di DB
-    public $timestamps = false; // Pastikan ada kolom created_at & updated_at, jika tidak ubah ke false
+    /**
+     * The table associated with the model.
+     */
+    protected $table = 'suplier';
 
+    /**
+     * The primary key for the model.
+     */
+    protected $primaryKey = 'id_suplier';
+
+    /**
+     * Indicates if the model should be timestamped.
+     */
+    public $timestamps = false;
+
+    /**
+     * The attributes that are mass assignable.
+     */
     protected $fillable = [
-        'nama_suplier', 'alamat', 'no_telp',
+        'nama_suplier',
+        'alamat',
+        'no_telp',
     ];
 
-    // Jika kolom timestamp di DB menggunakan nama berbeda
-    // const CREATED_AT = 'tanggal_dibuat';
-    // const UPDATED_AT = 'tanggal_diperbarui';
+    /**
+     * Get the materials supplied by this supplier.
+     */
+    public function bahans()
+    {
+        return $this->hasMany(Bahan::class, 'id_suplier', 'id_suplier');
+    }
+    
+    // Relationship with purchases
+    public function pembelians()
+    {
+        return $this->hasMany(Pembelian::class, 'id_suplier', 'id_suplier');
+    }
 }

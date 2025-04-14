@@ -39,5 +39,11 @@ class Bahan extends Model
     {
         return $this->belongsTo(Suplier::class, 'id_suplier', 'id_suplier');
     }
+
+  
+public function pembelians()
+{
+    return $this->hasMany(Pembelian::class, 'id_bahan', 'id_bahan');
+}
 }
 

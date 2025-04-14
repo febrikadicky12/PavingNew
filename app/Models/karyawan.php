@@ -35,10 +35,17 @@ class Karyawan extends Model
     ];
 
     /**
-     * Get the user that owns the karyawan.
+     * Get the user associated with the karyawan.
      */
     public function user()
     {
-        return $this->belongsTo(User::class, 'id_karyawan', 'id_karyawan');
+        return $this->belongsTo(User::class, 'nama', 'name');
     }
+
+    // App\Models\Karyawan.php
+public function rekapAbsen()
+{
+    return $this->hasMany(RekapAbsen::class, 'id_karyawan', 'id_karyawan');
+}
+
 }

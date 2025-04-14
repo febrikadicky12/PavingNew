@@ -16,25 +16,17 @@
 <section class="section">
   <div class="row">
     <div class="col-lg-12">
-      <div class="card">
-        <div class="card-body">
-          <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
-            <h5 class="card-title">Daftar Karyawan</h5>
-            <a href="{{ route('admin.karyawan.create') }}" class="btn btn-primary">
-              Tambah Karyawan
-            </a>
-          </div>
 
           <!-- Search Form -->
           <form action="{{ route('admin.karyawan.index') }}" method="GET" class="mb-4">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Cari karyawan..." name="search" value="{{ $search ?? '' }}">
               <button class="btn btn-primary" type="submit">
-                </i> Cari
+                <i class="bi bi-search"></i> Cari
               </button>
               @if(!empty($search))
                 <a href="{{ route('admin.karyawan.index') }}" class="btn btn-secondary">
-                  </i> Reset
+                  <i class="bi bi-x"></i> Reset
                 </a>
               @endif
             </div>
@@ -56,8 +48,9 @@
                   <th scope="col">Nama</th>
                   <th scope="col">No. Telepon</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Email</th>
                   <th scope="col">Dibuat Pada</th>
-                  <th scope="col">Aksi</th>
+              
                 </tr>
               </thead>
               <tbody>
@@ -73,29 +66,13 @@
                       <span class="badge bg-info">Karyawan Bulanan</span>
                     @endif
                   </td>
+                  <td>{{ $karyawan->user ? $karyawan->user->email : '-' }}</td>
                   <td>{{ $karyawan->created_at ? $karyawan->created_at->format('d M Y, H:i') : '-' }}</td>
-
-                  <td>
-                    <div class="d-flex gap-1">
-                      <a href="{{ route('admin.karyawan.show', $karyawan->id_karyawan) }}" class="btn btn-info btn-sm">
-                        <i class="bi bi-eye"></i>
-                      </a>
-                      <a href="{{ route('admin.karyawan.edit', $karyawan->id_karyawan) }}" class="btn btn-warning btn-sm">
-                        <i class="bi bi-pencil"></i>
-                      </a>
-                      <form action="{{ route('admin.karyawan.destroy', $karyawan->id_karyawan) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus karyawan ini?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm">
-                          <i class="bi bi-trash"></i>
-                        </button>
-                      </form>
-                    </div>
-                  </td>
+                  
                 </tr>
                 @empty
                 <tr>
-                  <td colspan="6" class="text-center">Tidak ada data karyawan</td>
+                  <td colspan="7" class="text-center">Tidak ada data karyawan</td>
                 </tr>
                 @endforelse
               </tbody>
