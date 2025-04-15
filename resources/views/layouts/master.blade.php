@@ -29,7 +29,10 @@
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
         <!-- Include Footer -->
         @include('layouts.footer')
     </div>

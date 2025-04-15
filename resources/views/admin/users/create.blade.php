@@ -65,8 +65,14 @@
             <div class="row mb-3">
               <label class="col-sm-2 col-form-label">Role</label>
               <div class="col-sm-10">
+<<<<<<< HEAD
                 <select class="form-select" name="role" required>
                   <option selected disabled>Pilih Role</option>
+=======
+                <select class="form-select" id="role" name="role" required>
+                  <option value="" selected disabled>Pilih Role</option>
+                  <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
                   <option value="karyawan_borongan" {{ old('role') == 'karyawan_borongan' ? 'selected' : '' }}>Karyawan Borongan</option>
                   <option value="karyawan_bulanan" {{ old('role') == 'karyawan_bulanan' ? 'selected' : '' }}>Karyawan Bulanan</option>
                 </select>
@@ -85,5 +91,5 @@
     </div>
   </div>
 </section>
-
+</main>
 @endsection

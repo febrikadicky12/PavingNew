@@ -22,7 +22,9 @@
         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
           <h2>{{ $user->name }}</h2>
           <div class="pt-2">
-            @if($user->role == 'karyawan_borongan')
+            @if($user->role == 'admin')
+              <span class="badge bg-primary">Admin</span>
+            @elseif($user->role == 'karyawan_borongan')
               <span class="badge bg-success">Karyawan Borongan</span>
             @elseif($user->role == 'karyawan_bulanan')
               <span class="badge bg-info">Karyawan Bulanan</span>
@@ -57,13 +59,19 @@
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Nomor Telepon</div>
+<<<<<<< HEAD
                 <div class="col-lg-9 col-md-8">{{ $user->phone_number ?? '-' }}</div>
+=======
+                <div class="col-lg-9 col-md-8">{{ $user->phone_number }}</div>
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
               </div>
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Role</div>
                 <div class="col-lg-9 col-md-8">
-                  @if($user->role == 'karyawan_borongan')
+                  @if($user->role == 'admin')
+                    Admin
+                  @elseif($user->role == 'karyawan_borongan')
                     Karyawan Borongan
                   @elseif($user->role == 'karyawan_bulanan')
                     Karyawan Bulanan
@@ -81,9 +89,21 @@
                 <div class="col-lg-9 col-md-8">{{ $user->updated_at->format('d M Y, H:i') }}</div>
               </div>
 
+<<<<<<< HEAD
                 <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
                    Kembali
                 </a>
+=======
+              <div class="row mt-3">
+                <div class="col-lg-12">
+                  <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">
+                     <i class="bi bi-pencil"></i> Edit
+                  </a>
+                  <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
+                     <i class="bi bi-arrow-left"></i> Kembali
+                  </a>
+                </div>
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
               </div>
             </div>
           </div>
@@ -92,5 +112,5 @@
     </div>
   </div>
 </section>
-
+</main>
 @endsection

@@ -8,12 +8,25 @@ use App\Models\Bahan;
 use App\Models\Karyawan;
 use App\Models\Mesin;
 use App\Models\TotalProduksi;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\DB;
+=======
+use Illuminate\Support\Facades\DB; 
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class ProduksiController extends Controller
 {
+<<<<<<< HEAD
+=======
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
     /**
      * Display a listing of the resource.
      */
@@ -43,6 +56,7 @@ class ProduksiController extends Controller
      */
     public function create()
     {
+<<<<<<< HEAD
         $produk = Produk::all();
         $bahan = Bahan::all();
         $karyawan = Karyawan::all();
@@ -51,16 +65,32 @@ class ProduksiController extends Controller
 
         return view('admin.produksi.create', compact('produk', 'bahan', 'karyawan', 'mesin', 'totalProduksis'));
 
+=======
+        $produks = Produk::all();
+        $bahans = Bahan::all();
+        $karyawans = Karyawan::all();
+        $mesins = Mesin::all();
+        $totalProduksis = TotalProduksi::all();
+        
+        return view('admin.produksi.create', compact('produks', 'bahans', 'karyawans', 'mesins', 'totalProduksis'));
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
     }
 
     /**
      * Store a newly created resource in storage.
+<<<<<<< HEAD
+=======
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
      */
     public function store(Request $request)
     {
         $request->validate([
             'id_produk' => 'required|exists:produk,id_produk',
             'tanggal_produksi' => 'required|date',
+<<<<<<< HEAD
             'jumlah_produksi'  => 'required|integer|min:1',
             'status_produksi'  => 'required|in:sudah,proses',
             'id_bahan'         => 'required|exists:bahan,id_bahan',
@@ -82,29 +112,105 @@ class ProduksiController extends Controller
         Produksi::create($request->all());
 
         return redirect()->route('admin.produksi.index')->with('success', 'Produksi berhasil ditambahkan!');
+=======
+            'jumlah_produksi' => 'required|integer|min:1',
+            'status_produksi' => 'required|in:sudah,proses',
+            'id_bahan' => 'required|exists:bahan,id_bahan',
+            'id_karyawan' => 'required|exists:karyawan,id_karyawan',
+            'id_mesin' => 'required|exists:mesin,id',
+            'id_totalproduksi' => 'required|exists:total_produksi,id_totalproduksi'
+        ]);
+
+        // Cek ketersediaan bahan
+        $bahan = Bahan::find($request->id_bahan);
+        if ($bahan->stock_bahan < $request->jumlah_produksi) {
+            return redirect()->back()->with('error', 'Stok bahan tidak mencukupi untuk produksi ini!')->withInput();
+        }
+
+        $produksi = Produksi::create([
+            'id_produk' => $request->id_produk,
+            'tanggal_produksi' => $request->tanggal_produksi,
+            'jumlah_produksi' => $request->jumlah_produksi,
+            'status_produksi' => $request->status_produksi,
+            'id_bahan' => $request->id_bahan,
+            'id_karyawan' => $request->id_karyawan,
+            'id_mesin' => $request->id_mesin,
+            'id_totalproduksi' => $request->id_totalproduksi
+        ]);
+
+        // Kurangi stok bahan
+        $bahan->stock_bahan -= $request->jumlah_produksi;
+        $bahan->save();
+
+        // Tambah stok produk
+        $produk = Produk::find($request->id_produk);
+        $produk->stok_produk += $request->jumlah_produksi;
+        $produk->save();
+
+        return redirect()->route('admin.produksi.index')
+                         ->with('success', 'Data produksi berhasil ditambahkan!');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $produksi = Produksi::with(['produk', 'bahan', 'karyawan', 'mesin', 'totalProduksi'])->findOrFail($id);
+        return view('admin.produksi.show', compact('produksi'));
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
     }
 
     /**
      * Show the form for editing the specified resource.
+<<<<<<< HEAD
+=======
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
      */
     public function edit($id)
     {
         $produksi = Produksi::findOrFail($id);
+<<<<<<< HEAD
         $produk = Produk::all();
         $bahan = Bahan::all();
         $karyawan = Karyawan::all();
         $mesin = Mesin::all();
 
         return view('admin.produksi.edit', compact('produksi', 'produk', 'bahan', 'karyawan', 'mesin'));
+=======
+        $produks = Produk::all();
+        $bahans = Bahan::all();
+        $karyawans = Karyawan::all();
+        $mesins = Mesin::all();
+        $totalProduksis = TotalProduksi::all();
+        
+        return view('admin.produksi.edit', compact('produksi', 'produks', 'bahans', 'karyawans', 'mesins', 'totalProduksis'));
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
     }
 
     /**
      * Update the specified resource in storage.
+<<<<<<< HEAD
      */
     public function update(Request $request, $id)
     {
         $produksi = Produksi::findOrFail($id);
 
+=======
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
         $request->validate([
             'id_produk' => 'required|exists:produk,id_produk',
             'tanggal_produksi' => 'required|date',
@@ -154,6 +260,7 @@ class ProduksiController extends Controller
     public function destroy($id)
     {
         $produksi = Produksi::findOrFail($id);
+<<<<<<< HEAD
 
         $bahan = Bahan::findOrFail($produksi->id_bahan);
         $produk = Produk::findOrFail($produksi->id_produk);
@@ -175,3 +282,21 @@ class ProduksiController extends Controller
         return view('admin.produksi.show', compact('produksi'));
     }
 }
+=======
+        
+        // Kembalikan stok bahan dan produk sebelum menghapus
+        $bahan = Bahan::find($produksi->id_bahan);
+        $bahan->stock_bahan += $produksi->jumlah_produksi;
+        $bahan->save();
+        
+        $produk = Produk::find($produksi->id_produk);
+        $produk->stok_produk -= $produksi->jumlah_produksi;
+        $produk->save();
+        
+        $produksi->delete();
+        
+        return redirect()->route('admin.produksi.index')
+                         ->with('success', 'Data produksi berhasil dihapus!');
+    }
+}
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106

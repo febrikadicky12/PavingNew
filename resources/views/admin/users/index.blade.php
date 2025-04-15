@@ -56,7 +56,11 @@
                   <th scope="col">No</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Email</th>
+<<<<<<< HEAD
                   <th scope="col">Nomor Telepon</th>
+=======
+                  <th scope="col">No. Telepon</th>
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
                   <th scope="col">Role</th>
                   <th scope="col">Dibuat Pada</th>
                   <th scope="col">Aksi</th>
@@ -68,9 +72,15 @@
                   <th scope="row">{{ $index + $users->firstItem() }}</th>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
+<<<<<<< HEAD
                   <td>{{ $user->phone_number ?? '-' }}</td>
+=======
+                  <td>{{ $user->phone_number }}</td>
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
                   <td>
-                    @if($user->role == 'karyawan_borongan')
+                    @if($user->role == 'admin')
+                      <span class="badge bg-primary">Admin</span>
+                    @elseif($user->role == 'karyawan_borongan')
                       <span class="badge bg-success">Karyawan Borongan</span>
                     @elseif($user->role == 'karyawan_bulanan')
                       <span class="badge bg-info">Karyawan Bulanan</span>
@@ -114,4 +124,5 @@
     </div>
   </div>
 </section>
+</main>
 @endsection

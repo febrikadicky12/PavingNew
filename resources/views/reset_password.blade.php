@@ -6,7 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Form Reset Password</title>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </head>
@@ -16,6 +19,10 @@
       <div class="card-body">
         <form action="{{url('reset-password-proses')}}" method="post">
           @csrf
+<<<<<<< HEAD
+=======
+          
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
@@ -69,12 +76,19 @@
             <button type="submit" class="btn btn-primary me-2">Reset</button>
             <a href=" "class="btn btn-info text-white">Cancel</a>
           </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
         </form>
       </div>
     </div>
   </div>
 </body>
+<<<<<<< HEAD
 
+=======
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
 </html>
 </html>
 

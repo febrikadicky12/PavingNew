@@ -16,9 +16,15 @@ class UserController extends Controller
 
         $users = User::when($search, function ($query) use ($search) {
             return $query->where('name', 'like', "%{$search}%")
+<<<<<<< HEAD
                 ->orWhere('email', 'like', "%{$search}%")
                 ->orWhere('role', 'like', "%{$search}%")
                 ->orWhere('phone_number', 'like', "%{$search}%");
+=======
+                        ->orWhere('email', 'like', "%{$search}%")
+                        ->orWhere('role', 'like', "%{$search}%")
+                        ->orWhere('phone_number', 'like', "%{$search}%");
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
         })->paginate(10);
 
         return view('admin.users.index', compact('users', 'search'));
@@ -87,10 +93,16 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+<<<<<<< HEAD
             'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
             'phone_number' => 'required|string|digits_between:10,15|unique:users,phone_number,' . $user->id,
             'role' => 'required|in:admin,karyawan_borongan,karyawan_bulanan',
 
+=======
+            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
+            'phone_number' => 'required|string|digits_between:10,15|unique:users,phone_number,'.$user->id,
+            'role' => 'required|in:admin,karyawan_borongan,karyawan_bulanan',
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
         ]);
 
         $oldName = $user->name;

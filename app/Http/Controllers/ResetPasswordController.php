@@ -80,6 +80,10 @@ class ResetPasswordController extends Controller
     // Fungsi untuk menghasilkan password acak
     private function generateRandomPassword()
     {
+<<<<<<< HEAD
         return Str::random(8);
+=======
+        return Str::random(4);
+>>>>>>> d76b8a2b8e63c4187c6e59c3e92145e9a9e5c106
     }
 }
