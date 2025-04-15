@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<main id="main" class="main">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -50,19 +51,20 @@
                         </div>
                         
                         <div class="form-group">
-    <label for="total_harga">Total Harga <span class="text-danger">*</span></label>
-    <div class="input-group">
-        <div class="input-group-prepend">
-            <span class="input-group-text">Rp</span>
-        </div>
-        <input type="number" class="form-control @error('total_harga') is-invalid @enderror" 
-               id="total_harga" name="total_harga" value="{{ old('total_harga', 0) }}" required>
-        @error('total_harga')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
-    </div>
-</div>
-                        
+                            <label for="total_harga">Total Harga <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Rp</span>
+                                </div>
+                                <input type="number" class="form-control @error('total_harga') is-invalid @enderror" 
+                                       id="total_harga" name="total_harga" value="{{ old('total_harga', 0) }}" required readonly>
+                                @error('total_harga')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <small id="preview_total_harga" class="form-text text-muted">Total: Rp 0</small>
+                        </div>
+                        <div class="form-group mt-3"> 
                         <button type="submit" class="btn btn-primary">Simpan</button>
                     </form>
                 </div>
@@ -74,31 +76,40 @@
 @push('scripts')
 <script>
     $(document).ready(function() {
+        function formatRupiah(angka) {
+            return angka.toLocaleString('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            });
+        }
+
         function updateTotalHarga() {
             var selectedOption = $('#id_produk option:selected');
-            var harga = selectedOption.data('harga') || 0;
-            var jumlah = $('#jumlah_produk').val() || 0;
+            var harga = parseInt(selectedOption.data('harga')) || 0;
+            var jumlah = parseInt($('#jumlah_produk').val()) || 0;
             var total = harga * jumlah;
-            
-            $('#total_harga_preview').val(total.toLocaleString('id-ID'));
+
+            $('#total_harga').val(total);
+            $('#preview_total_harga').text('Total: ' + formatRupiah(total));
         }
-        
+
         function updateStokInfo() {
             var selectedOption = $('#id_produk option:selected');
             var stok = selectedOption.data('stok') || 0;
             $('#stok-tersedia').text('Stok tersedia: ' + stok);
         }
-        
+
         $('#id_produk').change(function() {
             updateTotalHarga();
             updateStokInfo();
         });
-        
+
         $('#jumlah_produk').on('input', function() {
             updateTotalHarga();
         });
-        
-        // Initialize
+
+        // Inisialisasi saat halaman dimuat
         updateTotalHarga();
         updateStokInfo();
     });

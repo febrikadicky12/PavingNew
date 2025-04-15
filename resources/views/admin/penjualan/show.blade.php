@@ -62,14 +62,7 @@
                         </table>
                     </div>
                     
-                    <div class="mt-3">
-                        <a href="{{ route('admin.penjualan.edit', $penjualan->id_penjualan) }}" class="btn btn-warning">Edit</a>
-                        <form action="{{ route('admin.penjualan.destroy', $penjualan->id_penjualan) }}" method="POST" class="d-inline">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Hapus</button>
-                        </form>
-                    </div>
+                
                 </div>
             </div>
         </div>

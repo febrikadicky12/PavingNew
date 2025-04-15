@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<main id="main" class="main">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -66,7 +67,7 @@
                                 <input type="text" class="form-control" id="total_harga_preview" value="{{ number_format($penjualan->total_harga, 0, ',', '.') }}" readonly>
                             </div>
                         </div>
-                        
+                        <div class="form-group mt-3">
                         <button type="submit" class="btn btn-primary">Perbarui</button>
                     </form>
                 </div>

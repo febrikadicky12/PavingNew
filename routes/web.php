@@ -17,7 +17,6 @@ use App\Http\Controllers\Karyawan\AbsenController;
 use App\Http\Controllers\Admin\BahanController;
 use App\Http\Controllers\Admin\NilaiProdukController;
 use App\Http\Controllers\UserProfileController;
-
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Models\Produk;
@@ -300,6 +299,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('/mitra/{id}', [MitraController::class, 'update'])->name('mitra.update');
     Route::delete('/mitra/{id}', [MitraController::class, 'destroy'])->name('mitra.destroy');
 });
+
 
 });
 

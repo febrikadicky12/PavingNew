@@ -14,16 +14,11 @@ class UserController extends Controller
     {
         $search = $request->input('search');
 
-        $users = User::when($search, function($query) use ($search) {
+        $users = User::when($search, function ($query) use ($search) {
             return $query->where('name', 'like', "%{$search}%")
-                        ->orWhere('email', 'like', "%{$search}%")
-<<<<<<< HEAD
-                        ->orWhere('role', 'like', "%{$search}%")
-                        ->orWhere('phone_number', 'like', "%{$search}%");
-=======
-                        ->orWhere('phone', 'like', "%{$search}%")
-                        ->orWhere('role', 'like', "%{$search}%");
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
+                ->orWhere('email', 'like', "%{$search}%")
+                ->orWhere('role', 'like', "%{$search}%")
+                ->orWhere('phone_number', 'like', "%{$search}%");
         })->paginate(10);
 
         return view('admin.users.index', compact('users', 'search'));
@@ -40,16 +35,13 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'phone' => 'required|string|digits_between:10,15|unique:users',
+            'phone_number' => 'required|string|digits_between:10,15|unique:users',
             'role' => 'required|in:admin,karyawan_borongan,karyawan_bulanan',
-            'phone_number' => 'required|string|max:15',
         ]);
 
-<<<<<<< HEAD
         DB::beginTransaction();
-        
+
         try {
-            // Buat user terlebih dahulu
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -57,17 +49,13 @@ class UserController extends Controller
                 'role' => $request->role,
                 'phone_number' => $request->phone_number,
             ]);
-            
-            // Jika role adalah karyawan, buat record karyawan juga
+
             if (str_starts_with($request->role, 'karyawan_')) {
-                // Cek apakah karyawan dengan nama tersebut sudah ada
                 $karyawanExists = Karyawan::where('nama', $request->name)->first();
-                
+
                 if (!$karyawanExists) {
-                    // Tentukan status berdasarkan role
                     $status = str_replace('karyawan_', '', $request->role);
-                    
-                    // Buat record karyawan baru dengan nomor telepon dari user
+
                     Karyawan::create([
                         'nama' => $request->name,
                         'no_telp' => $request->phone_number,
@@ -75,24 +63,13 @@ class UserController extends Controller
                     ]);
                 }
             }
-            
+
             DB::commit();
             return redirect()->route('admin.users.index')->with('success', 'User berhasil ditambahkan!');
         } catch (\Exception $e) {
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
         }
-=======
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'phone' => $request->phone,
-            'role' => $request->role,
-        ]);
-
-        return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan!');
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
     }
 
     public function show(User $user)
@@ -110,36 +87,22 @@ class UserController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
-            'phone' => 'required|string|digits_between:10,15|unique:users,phone,'.$user->id,
+            'email' => 'required|string|email|max:255|unique:users,email,' . $user->id,
+            'phone_number' => 'required|string|digits_between:10,15|unique:users,phone_number,' . $user->id,
             'role' => 'required|in:admin,karyawan_borongan,karyawan_bulanan',
-            'phone_number' => 'required|string|max:15',
+
         ]);
 
-<<<<<<< HEAD
         $oldName = $user->name;
-        
+
         DB::beginTransaction();
-        
+
         try {
-            // Update data user
             $user->update([
                 'name' => $request->name,
                 'email' => $request->email,
                 'role' => $request->role,
                 'phone_number' => $request->phone_number,
-=======
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'role' => $request->role,
-        ];
-
-        if ($request->filled('password')) {
-            $request->validate([
-                'password' => 'string|min:8',
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
             ]);
 
             if ($request->filled('password')) {
@@ -151,22 +114,17 @@ class UserController extends Controller
                 ]);
             }
 
-            // Cek jika rolenya karyawan
             if (str_starts_with($request->role, 'karyawan_')) {
                 $status = str_replace('karyawan_', '', $request->role);
-                
-                // Cari karyawan yang namanya sama dengan nama lama user
                 $karyawan = Karyawan::where('nama', $oldName)->first();
-                
+
                 if ($karyawan) {
-                    // Update karyawan yang sudah ada dengan nomor telepon baru
                     $karyawan->update([
-                        'nama' => $request->name, // Update nama jika nama user berubah
-                        'no_telp' => $request->phone_number, // Selalu update nomor telepon
+                        'nama' => $request->name,
+                        'no_telp' => $request->phone_number,
                         'status' => $status,
                     ]);
                 } else {
-                    // Jika tidak ada karyawan dengan nama tersebut, buat baru
                     Karyawan::create([
                         'nama' => $request->name,
                         'no_telp' => $request->phone_number,
@@ -174,7 +132,7 @@ class UserController extends Controller
                     ]);
                 }
             }
-            
+
             DB::commit();
             return redirect()->route('admin.users.index')->with('success', 'User berhasil diperbarui!');
         } catch (\Exception $e) {
@@ -186,19 +144,16 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         DB::beginTransaction();
-        
+
         try {
-            // Cek apakah ada karyawan dengan nama yang sama
             $karyawan = Karyawan::where('nama', $user->name)->first();
-            
-            // Hapus karyawan jika ada
+
             if ($karyawan) {
                 $karyawan->delete();
             }
-            
-            // Hapus user
+
             $user->delete();
-            
+
             DB::commit();
             return redirect()->route('admin.users.index')->with('success', 'User berhasil dihapus!');
         } catch (\Exception $e) {

@@ -1,5 +1,5 @@
 <!-- resources/views/karyawan/absen/index.blade.php -->
-@extends('layoutskaryawanborongan.master')
+@extends('layoutskaryawanbulanan.master')
 
 @section('content')
 <div class="container">

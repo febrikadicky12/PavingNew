@@ -2,39 +2,41 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale= 1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title')</title>
-    <title>@yield('title', default: 'Dashboard')</title>
+    
+    <title>@yield('title', 'Dashboard')</title>
 
-    <!-- Link ke Google Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Nunito:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Link ke CSS NiceAdmin -->
+
+    <!-- NiceAdmin CSS -->
     <link href="{{ asset('NiceAdmin/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('NiceAdmin/assets/vendor/bootstrap-icons/bootstrap-icons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('NiceAdmin/assets/css/style.css') }}" rel="stylesheet">
 
-    @stack('styles') <!-- Untuk custom CSS di halaman lain -->
+    @stack('styles') <!-- Custom CSS dari halaman lain -->
 </head>
 <body>
     <div class="container">
-        <!-- Include Sidebar -->
-        @include('layouts.sidebar')
+        <!-- Sidebar -->
+        @includeIf('layoutskaryawanbulanan.sidebar', ['karyawan' => Auth::user()]) <!-- opsional bisa dikasih data -->
 
-        <main class="container">
-            @yield('content') <!-- Tempat konten halaman lain -->
+        <!-- Main Content -->
+        <main class="container py-4">
+            @yield('content')
         </main>
 
-        <!-- Include Footer -->
-        @include('layouts.footer')
+        <!-- Footer -->
+        @includeIf('layoutskaryawanbulanan.footer')
     </div>
 
-    <!-- Script JS -->
+    <!-- JS Vendor -->
     <script src="{{ asset('NiceAdmin/assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('NiceAdmin/assets/js/main.js') }}"></script>
 
-    @stack('scripts') <!-- Untuk custom JS di halaman lain -->
+    @stack('scripts') <!-- Custom JS dari halaman lain -->
 </body>
 </html>

@@ -21,14 +21,14 @@
 <body>
     <div class="container">
         <!-- Include Sidebar -->
-        @include('layouts.sidebar')
+        @include('layoutskaryawanborongan.sidebar')
 
         <main class="container">
             @yield('content') <!-- Tempat konten halaman lain -->
         </main>
 
         <!-- Include Footer -->
-        @include('layouts.footer')
+        @include('layoutskaryawanborongan.footer')
     </div>
 
     <!-- Script JS -->

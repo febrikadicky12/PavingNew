@@ -3,11 +3,7 @@
 @section('title', 'Detail Karyawan')
 
 @section('content')
-<<<<<<< HEAD
-
-=======
 <main id="main" class="main">
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
 <div class="pagetitle">
   <h1>Detail Karyawan</h1>
   <nav>
@@ -61,11 +57,7 @@
 
               <div class="row">
                 <div class="col-lg-3 col-md-4 label">Nomor Telepon</div>
-<<<<<<< HEAD
-                <div class="col-lg-9 col-md-8">{{ $user->phone_number }}</div>
-=======
-                <div class="col-lg-9 col-md-8">{{ $user->phone ?? '-' }}</div>
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
+                <div class="col-lg-9 col-md-8">{{ $user->phone_number ?? '-' }}</div>
               </div>
 
               <div class="row">
@@ -89,21 +81,9 @@
                 <div class="col-lg-9 col-md-8">{{ $user->updated_at->format('d M Y, H:i') }}</div>
               </div>
 
-<<<<<<< HEAD
-              <div class="row mt-3">
-                <div class="col-lg-12">
-                  <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning">
-                     Edit
-                  </a>
-                  <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
-                     Kembali
-                  </a>
-                </div>
-=======
                 <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
-                  <i class="bi bi-arrow-left"></i> Kembali
+                   Kembali
                 </a>
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
               </div>
             </div>
           </div>

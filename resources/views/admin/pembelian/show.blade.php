@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<main id="main" class="main">
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -68,19 +69,6 @@
                         </tr>
                     </table>
                 </div>
-            </div>
-            
-            <div class="mt-4 d-flex">
-                <a href="{{ route('admin.pembelian.edit', $pembelian->id_pembelian) }}" class="btn btn-warning mr-2">
-                    <i class="fas fa-edit"></i> Edit
-                </a>
-                <form action="{{ route('admin.pembelian.destroy', $pembelian->id_pembelian) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus data ini?')">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">
-                        <i class="fas fa-trash"></i> Hapus
-                    </button>
-                </form>
             </div>
         </div>
     </div>

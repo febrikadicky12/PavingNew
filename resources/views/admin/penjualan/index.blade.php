@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+<main id="main" class="main">
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">

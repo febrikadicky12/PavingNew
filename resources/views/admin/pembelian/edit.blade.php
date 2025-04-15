@@ -3,6 +3,7 @@
 
 
 @section('content')
+<main id="main" class="main">
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -74,7 +75,7 @@
                     </div>
                 </div>
                 
-                <div class="form-group">
+                <div class="form-group mt-3">
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-save"></i> Update
                     </button>
