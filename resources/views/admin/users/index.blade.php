@@ -22,11 +22,7 @@
           <div class="d-flex justify-content-between align-items-center mb-3 mt-3">
             <h5 class="card-title">Daftar Karyawan</h5>
             <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
-<<<<<<< HEAD
-              <i class="bi bi-plus-circle"></i> Tambah Karyawan
-=======
               <i class="bi bi-person-plus"></i> Tambah Karyawan
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
             </a>
           </div>
 
@@ -60,11 +56,7 @@
                   <th scope="col">No</th>
                   <th scope="col">Nama</th>
                   <th scope="col">Email</th>
-<<<<<<< HEAD
                   <th scope="col">No. Telepon</th>
-=======
-                  <th scope="col">Nomor Telepon</th>
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
                   <th scope="col">Role</th>
                   <th scope="col">Dibuat Pada</th>
                   <th scope="col">Aksi</th>
@@ -76,13 +68,11 @@
                   <th scope="row">{{ $index + $users->firstItem() }}</th>
                   <td>{{ $user->name }}</td>
                   <td>{{ $user->email }}</td>
-<<<<<<< HEAD
                   <td>{{ $user->phone_number }}</td>
-=======
-                  <td>{{ $user->phone ?? '-' }}</td>
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
                   <td>
-                    @if($user->role == 'karyawan_borongan')
+                    @if($user->role == 'admin')
+                      <span class="badge bg-primary">Admin</span>
+                    @elseif($user->role == 'karyawan_borongan')
                       <span class="badge bg-success">Karyawan Borongan</span>
                     @elseif($user->role == 'karyawan_bulanan')
                       <span class="badge bg-info">Karyawan Bulanan</span>
@@ -126,4 +116,5 @@
     </div>
   </div>
 </section>
+</main>
 @endsection

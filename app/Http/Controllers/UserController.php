@@ -17,13 +17,8 @@ class UserController extends Controller
         $users = User::when($search, function($query) use ($search) {
             return $query->where('name', 'like', "%{$search}%")
                         ->orWhere('email', 'like', "%{$search}%")
-<<<<<<< HEAD
                         ->orWhere('role', 'like', "%{$search}%")
                         ->orWhere('phone_number', 'like', "%{$search}%");
-=======
-                        ->orWhere('phone', 'like', "%{$search}%")
-                        ->orWhere('role', 'like', "%{$search}%");
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
         })->paginate(10);
 
         return view('admin.users.index', compact('users', 'search'));
@@ -40,12 +35,10 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
-            'phone' => 'required|string|digits_between:10,15|unique:users',
+            'phone_number' => 'required|string|digits_between:10,15|unique:users',
             'role' => 'required|in:admin,karyawan_borongan,karyawan_bulanan',
-            'phone_number' => 'required|string|max:15',
         ]);
 
-<<<<<<< HEAD
         DB::beginTransaction();
         
         try {
@@ -82,17 +75,6 @@ class UserController extends Controller
             DB::rollback();
             return redirect()->back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
         }
-=======
-        User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'phone' => $request->phone,
-            'role' => $request->role,
-        ]);
-
-        return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan!');
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
     }
 
     public function show(User $user)
@@ -111,12 +93,10 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,'.$user->id,
-            'phone' => 'required|string|digits_between:10,15|unique:users,phone,'.$user->id,
+            'phone_number' => 'required|string|digits_between:10,15|unique:users,phone_number,'.$user->id,
             'role' => 'required|in:admin,karyawan_borongan,karyawan_bulanan',
-            'phone_number' => 'required|string|max:15',
         ]);
 
-<<<<<<< HEAD
         $oldName = $user->name;
         
         DB::beginTransaction();
@@ -128,18 +108,6 @@ class UserController extends Controller
                 'email' => $request->email,
                 'role' => $request->role,
                 'phone_number' => $request->phone_number,
-=======
-        $data = [
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'role' => $request->role,
-        ];
-
-        if ($request->filled('password')) {
-            $request->validate([
-                'password' => 'string|min:8',
->>>>>>> 3837196eef8476f2d5ba08269722bc426acc43d7
             ]);
 
             if ($request->filled('password')) {
